@@ -11,6 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/users")
+@CrossOrigin
 public class UserController {
 
     @Autowired
@@ -38,8 +39,8 @@ public class UserController {
     public User updateUser(@RequestBody User newUser, @PathVariable(value = "id") Long id) {
         return this.userRepository.findById(id)
                 .map(user -> {
-                    user.setFirst_name(newUser.getFirst_name());
-                    user.setLast_name(newUser.getLast_name());
+                    user.setFirstName(newUser.getFirstName());
+                    user.setLastName(newUser.getLastName());
                     user.setEmail(newUser.getEmail());
                     user.setPassword(newUser.getPassword());
                     user.setAddress(newUser.getAddress());
