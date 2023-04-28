@@ -3,6 +3,7 @@ package com.example.springbootreactjsauctionapp;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+
 @SpringBootApplication
 public class SpringBootReactJsAuctionAppApplication {
 
@@ -11,3 +12,4 @@ public class SpringBootReactJsAuctionAppApplication {
 	}
 
 }
+

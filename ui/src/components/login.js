@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router";
 import "./login.css";
 
 export default function Login() {
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -13,47 +15,49 @@ export default function Login() {
     setEmail("");
     setPassword("");
 
-    fetch("", {
+    fetch("http://localhost:8080/user/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(user),
-    }).then(() => {
-      console.log("New user added");
-    });
+    })
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          throw new Error("Authentication failed");
+        }
+      })
+      .then((user) => {
+        console.log(user);
+        if (user === null) {
+          navigate("/login");
+        } else {
+          navigate("/", { user });
+        }
+      })
+      .catch((error) => console.error(error));
   };
   return (
-    <div className="login_page">
-      <header className="header">
-        <div className="frame_369"></div>
-      </header>
-      <div className="group161"></div>
-      <div className="frame185">
-        <div className="frame176">
-          <div className="frame108">
-            <span className="auction-app-logo"></span>
-          </div>
+    <form className="frame184l" onSubmit={handleSubmit}>
+      <div className="frame180l">
+        <div className="frame178l">
+          <h5 className="loginTitle">LOGIN</h5>
         </div>
-      </div>
 
-      <form className="frame184" onSubmit={handleSubmit}>
-        <div className="frame180">
-          <div className="frame178">
-            <h5 className="loginTitle">LOGIN</h5>
-          </div>
-
-          <div className="frame179">
-            <div className="frame270">
-              <div className="inputEmail">
-                <span className="labelText">Enter Email</span>
-                <input
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  className="frame239"
-                  placeholder="user@domain.com"
-                  required
-                />
-              </div>
+        <div className="frame179l">
+          <div className="frame270">
+            <div className="inputEmailL">
+              <span className="labelText">Enter Email</span>
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="frame239"
+                placeholder="user@domain.com"
+                required
+              />
+            </div>
+            <div className="frame269">
               <div className="inputPassword">
                 <span className="labelText">Password</span>
                 <input
@@ -65,52 +69,35 @@ export default function Login() {
                   required
                 />
               </div>
-            </div>
-
-            <div className="frame271">
-              <button type="submit" className="ctaLog">
-                <span className="logButton">LOGIN</span>
-              </button>
-              <div className="frame185">
-                <div className="ctaGmail">
-                  <span className="image6"></span>
-                  <span className="loginWithGmail">Signup with Gmail</span>
-                </div>
+              <div className="frame181">
+                <label>
+                  <input type="checkbox" />
+                  Remember me
+                </label>
               </div>
-              <div className="ctaFb">
-                <span className="image6Fb"></span>
+            </div>
+          </div>
+
+          <div className="frame271">
+            <button type="submit" className="ctaLog">
+              <span className="logButton">LOGIN</span>
+            </button>
+            <div className="frame185l">
+              <div className="ctaGmailL">
+                <span className="loginWithGmail">Signup with Gmail</span>
+                <span className="imageGmail"></span>
+              </div>
+
+              <div className="ctaFbL">
                 <span className="loginWithFb">Signup with Facebook</span>
+                <span className="image6Fbl"></span>
               </div>
             </div>
           </div>
+        </div>
 
-          <span className="forgotPassword">Forgot password?</span>
-        </div>
-      </form>
-
-      <footer>
-        <div className="frame34">
-          <span className="getInTouch">GET IN TOUCH</span>
-          <div className="frame32">
-            <div className="frame35">
-              <span className="callUsAt">Call Us at</span>
-              <span className="phoneNum">+123 797-567-2535</span>
-            </div>
-            <span className="support">support@auction.com</span>
-            <div className="frame36">
-              <div className="frame369"></div>
-            </div>
-          </div>
-        </div>
-        <div className="frame33">
-          <span className="auction">AUCTION</span>
-          <div className="frame32">
-            <span className="aboutUs">About Us</span>
-            <span className="termsAndCond">Terms and Conditions</span>
-            <span className="privacyAndPolicy">Privacy and Policy</span>
-          </div>
-        </div>
-      </footer>
-    </div>
+        <span className="forgotPassword">Forgot password?</span>
+      </div>
+    </form>
   );
 }

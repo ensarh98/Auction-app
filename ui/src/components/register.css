@@ -1,58 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Lato&display=swap");
 
-.register_page {
-  box-sizing: border-box;
-  position: relative;
-  width: 1440px;
-  height: 1564px;
-
-  /* Neutral/White */
-
-  background: #ffffff;
-  /* Neutral/Neutral 09 */
-
-  border: 1px solid #d8d8d8;
-}
-
-.header {
-  position: absolute;
-  width: 1440px;
-  height: 40px;
-  left: 0px;
-  top: 0px;
-  box-sizing: border-box;
-  left: 0%;
-  right: 0%;
-  top: 0%;
-  bottom: 0%;
-  background: #252525;
-}
-
-.frame_369 {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  padding: 0px;
-  gap: 16px;
-
-  position: absolute;
-  left: 12.43%;
-  right: 80.21%;
-  top: 20%;
-  bottom: 17.5%;
-}
-
-.group161 {
-  position: absolute;
-  width: 1440px;
-  height: 1px;
-  left: 0px;
-  top: 132px;
-  box-sizing: border-box;
-  background: #ffffff;
-  border: 1px solid #d8d8d8;
-}
-
 .reactangle11 {
   box-sizing: border-box;
   position: absolute;
@@ -62,280 +9,6 @@
   top: 132px;
   background: #ffffff;
   border: 1px solid #d8d8d8;
-}
-
-.frame185 {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 0px;
-  gap: 32px;
-  position: absolute;
-  width: 1112px;
-  height: 60px;
-  left: 391px;
-  top: 56px;
-}
-
-.frame176 {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 0px;
-  gap: 32px;
-
-  width: 1112px;
-  height: 56px;
-
-  /* Inside auto layout */
-
-  flex: none;
-  order: 0;
-  flex-grow: 0;
-}
-
-.frame108 {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0px;
-  gap: 73px;
-
-  width: 1112px;
-  height: 56px;
-
-  /* Inside auto layout */
-
-  flex: none;
-  order: 0;
-  flex-grow: 0;
-}
-
-.auction-app-logo {
-  width: 163px;
-  height: 56px;
-
-  background: url();
-
-  /* Inside auto layout */
-
-  flex: none;
-  order: 0;
-  flex-grow: 0;
-}
-
-footer {
-  position: absolute;
-  width: 1440px;
-  height: 356px;
-  left: 0px;
-  top: 1208px;
-  box-sizing: border-box;
-  bottom: 0%;
-  background: #252525;
-}
-
-.frame34 {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  padding: 0px;
-  gap: 24px;
-
-  position: absolute;
-  left: 73.26%;
-  right: 11.11%;
-  top: 9.27%;
-  bottom: 50%;
-}
-
-.frame33 {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  padding: 0px;
-  gap: 24px;
-
-  position: absolute;
-  left: 11.18%;
-  right: 78.26%;
-  top: 8.71%;
-  bottom: 50.84%;
-}
-
-.frame32 {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  padding: 0px;
-  gap: 12px;
-  width: 225px;
-  height: 97px;
-  flex: none;
-  order: 1;
-  flex-grow: 0;
-}
-
-.frame35 {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  padding: 0px;
-  gap: 12px;
-  width: 225px;
-  height: 24px;
-  flex: none;
-  order: 0;
-  flex-grow: 0;
-}
-
-.callUsAt {
-  width: 67px;
-  height: 24px;
-  font-family: "Lato";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 24px;
-  color: #d8d8d8;
-  border: 1px solid #d8d8d8;
-  flex: none;
-  order: 0;
-  flex-grow: 0;
-}
-
-.phoneNum {
-  width: 146px;
-  height: 24px;
-  font-family: "Lato";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 24px;
-  color: #d8d8d8;
-  border: 1px solid #d8d8d8;
-  flex: none;
-  order: 1;
-  flex-grow: 0;
-}
-
-.support {
-  width: 154px;
-  height: 24px;
-  font-family: "Lato";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 24px;
-  color: #d8d8d8;
-  border: 1px solid #d8d8d8;
-  flex: none;
-  order: 1;
-  flex-grow: 0;
-}
-
-.frame36 {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  padding: 0px;
-  gap: 12px;
-  width: 106px;
-  height: 25px;
-  flex: none;
-  order: 2;
-  flex-grow: 0;
-}
-
-.frame369 {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  padding: 0px;
-  gap: 16px;
-  width: 106px;
-  height: 25px;
-  flex: none;
-  order: 0;
-  flex-grow: 0;
-}
-
-.getInTouch {
-  width: 111px;
-  height: 24px;
-  font-family: "Lato";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 24px;
-  color: #ffffff;
-  opacity: 0.5;
-  flex: none;
-  order: 0;
-  flex-grow: 0;
-}
-
-.auction {
-  width: 72px;
-  height: 24px;
-  font-family: "Lato";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 24px;
-  color: #ffffff;
-  opacity: 0.5;
-  flex: none;
-  order: 0;
-  flex-grow: 0;
-}
-
-.aboutUs {
-  width: 66px;
-  height: 24px;
-  font-family: "Lato";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 24px;
-  color: #d8d8d8;
-  border: 1px solid #d8d8d8;
-  flex: none;
-  order: 0;
-  flex-grow: 0;
-}
-
-.termsAndCond {
-  width: 152px;
-  height: 24px;
-  font-family: "Lato";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 24px;
-  color: #d8d8d8;
-  border: 1px solid #d8d8d8;
-  flex: none;
-  order: 1;
-  flex-grow: 0;
-}
-
-.privacyAndPolicy {
-  width: 127px;
-  height: 24px;
-  font-family: "Lato";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 24px;
-  color: #d8d8d8;
-  border: 1px solid #d8d8d8;
-  flex: none;
-  order: 2;
-  flex-grow: 0;
 }
 
 .reactangle16 {
@@ -348,7 +21,7 @@ footer {
   background: #252525;
 }
 
-.frame184 {
+.frame184r {
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -363,7 +36,7 @@ footer {
   border: 1px solid #d8d8d8;
 }
 
-.frame180 {
+.frame180r {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -371,7 +44,7 @@ footer {
   padding: 0px 0px 32px;
   gap: 48px;
   width: 738px;
-  height: 967px;
+
   flex: none;
   order: 0;
   flex-grow: 0;
@@ -392,7 +65,7 @@ footer {
   flex-grow: 0;
 }
 
-.frame178 {
+.frame178r {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -406,7 +79,7 @@ footer {
   flex-grow: 0;
 }
 
-.frame179 {
+.frame179R {
   width: 548px;
   height: 733px;
   flex: none;
@@ -414,7 +87,7 @@ footer {
   flex-grow: 0;
 }
 
-.frame185 {
+.frame185r {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
@@ -462,7 +135,7 @@ footer {
   background-size: cover;
 }
 
-.ctaFb {
+.ctaFbR {
   box-sizing: border-box;
   position: absolute;
   width: 285px;

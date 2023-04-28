@@ -2,20 +2,29 @@ package com.example.springbootreactjsauctionapp.controllers;
 
 import com.example.springbootreactjsauctionapp.models.User;
 import com.example.springbootreactjsauctionapp.repositories.UserRepository;
+import com.example.springbootreactjsauctionapp.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/users")
+@RequestMapping("/user")
 @CrossOrigin
 public class UserController {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private final UserService userService;
+
+    public UserController(UserService userService) {
+        this.userService = userService;
+    }
 
     @GetMapping("")
     public List<User> getUsers() {
@@ -24,15 +33,10 @@ public class UserController {
 
     @GetMapping("/{id}")
     public ResponseEntity<User> getUserById(@PathVariable Long id) {
+        System.out.println(id);
         return userRepository.findById(id)
                 .map(user -> new ResponseEntity<>(user, HttpStatus.OK))
                 .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
-    }
-
-    @PostMapping("")
-    public ResponseEntity<User> createUser(@RequestBody User user) {
-        User savedUser = userRepository.save(user);
-        return new ResponseEntity<>(savedUser, HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")
@@ -63,5 +67,25 @@ public class UserController {
                     return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
                 })
                 .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    }
+
+    @PostMapping("/register")
+    public ResponseEntity<User> register(@RequestBody User user) {
+        User registeredUser = userService.registerUser(user.getFirstName(), user.getLastName(), user.getEmail(), user.getPassword());
+        System.out.println("register request: " + registeredUser);
+        return new ResponseEntity<>(registeredUser, HttpStatus.CREATED);
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<User> register(@RequestBody User user, Model model) {
+        System.out.println("login request: " + user);
+        User authenticated = userService.authenticate(user.getEmail(), user.getPassword());
+        System.out.println("login AUTH: " + authenticated);
+        if(authenticated != null) {
+            //String authenticatedJson = objectMapper.writeValueAsString(authenticated);
+            return ResponseEntity.ok(authenticated);
+        } else {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
     }
 }
