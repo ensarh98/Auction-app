@@ -5,8 +5,7 @@ import InstagramIcon from "@mui/icons-material/Instagram";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import { Link } from "react-router-dom";
 
-export default function Header() {
-  var user;
+export default function Header(props) {
   return (
     <header className="header">
       <div className="frame_369">
@@ -30,7 +29,7 @@ export default function Header() {
         </Link>
       </div>
       <div className="group161"></div>
-      <div className="frame185">
+      <div className="frame185h">
         <div className="frame176">
           <div className="frame108">
             <span className="auction-app-logo"></span>

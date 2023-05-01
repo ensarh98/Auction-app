@@ -49,6 +49,7 @@ export default function Register() {
               <span className="labelText">First name</span>
               <input
                 type="text"
+                name="firstName"
                 value={firstName}
                 onChange={(e) => setFirstName(e.target.value)}
                 className="frame239"
@@ -60,6 +61,7 @@ export default function Register() {
               <span className="labelText">Last name</span>
               <input
                 type="text"
+                name="lastName"
                 value={lastName}
                 onChange={(e) => setLastName(e.target.value)}
                 className="frame239"
@@ -71,6 +73,7 @@ export default function Register() {
               <span className="labelText">Enter Email</span>
               <input
                 type="email"
+                name="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 className="frame239"
@@ -82,6 +85,7 @@ export default function Register() {
               <span className="labelText">Password</span>
               <input
                 type="password"
+                name="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 className="frame239"

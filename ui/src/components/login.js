@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
 import "./login.css";
 
-export default function Login() {
+export default function Login(props) {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -28,11 +28,12 @@ export default function Login() {
         }
       })
       .then((user) => {
-        console.log(user);
         if (user === null) {
           navigate("/login");
         } else {
-          navigate("/", { user });
+          props.setUser(user);
+          props.setCookie(user);
+          navigate("/");
         }
       })
       .catch((error) => console.error(error));
@@ -50,6 +51,7 @@ export default function Login() {
               <span className="labelText">Enter Email</span>
               <input
                 type="email"
+                name="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 className="frame239"
@@ -62,6 +64,7 @@ export default function Login() {
                 <span className="labelText">Password</span>
                 <input
                   type="password"
+                  name="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   className="frame239"

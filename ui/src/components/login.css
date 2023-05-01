@@ -20,15 +20,6 @@
   border: 1px solid #d8d8d8;
 }
 
-.auction-app-logo {
-  width: 163px;
-  height: 56px;
-  background: url();
-  flex: none;
-  order: 0;
-  flex-grow: 0;
-}
-
 .reactangle16 {
   box-sizing: border-box;
   position: absolute;

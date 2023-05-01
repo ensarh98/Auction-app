@@ -1,26 +1,68 @@
 import React from "react";
-import { Routes, Route, Link, NavLink } from "react-router-dom";
+import "./home.css";
 
-export default function Home() {
+export default function Home(props) {
   return (
-    <div>
-      <ul>
-        <li>
-          <NavLink to="/" exact activeStyle={{ color: "red" }}>
-            Home
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/login" exact activeStyle={{ color: "green" }}>
-            Login
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/register" exact activeStyle={{ color: "magenta" }}>
-            Register
-          </NavLink>
-        </li>
-      </ul>
+    <div className="frame223">
+      <div className="frame222">
+        <div className="frame218">
+          <div className="frame217">
+            <div className="frame216">
+              <span className="categoriesText">CATEGORIES</span>
+            </div>
+            <div className="frame208">
+              <div className="frame206">
+                <div className="frame205">
+                  <span className="categoryName">Fashion</span>
+                  <span className="line11"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="frame220">
+          <div className="frame221">
+            <div className="frame219">
+              <span className="articalName">Running Shoes</span>
+              <span className="startPrice">Start From $59.00</span>
+              <span className="articalDetails">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Vestibulum hendrerit odio a erat lobortis auctor. Curabitur
+                sodales pharetra placerat. Aenean auctor luctus tempus. Cras
+                laoreet et magna in dignissim. Nam et tincidunt augue. Vivamus
+                quis malesuada velit. In hac habitasse platea dictumst.
+              </span>
+            </div>
+            <div className="bidNow">
+              <span className="bidNowText">BID NOW</span>
+            </div>
+          </div>
+          <div className="reactangle54"></div>
+        </div>
+      </div>
+      <div className="frame125">
+        <div className="frame171">
+          <span className="fProducts">Featured Products</span>
+          <span className="line10"></span>
+        </div>
+        <div className="frame6">
+          <div className="product">
+            <div className="reactangle18"></div>
+            <span className="productName"></span>
+            <span className="productStartPrice"></span>
+          </div>
+          <div className="product">
+            <div className="reactangle18"></div>
+            <span className="productName"></span>
+            <span className="productStartPrice"></span>
+          </div>
+          <div className="product">
+            <div className="reactangle18"></div>
+            <span className="productName"></span>
+            <span className="productStartPrice"></span>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
