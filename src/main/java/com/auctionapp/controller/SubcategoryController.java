@@ -1,12 +1,12 @@
 package com.auctionapp.controller;
 
+import com.auctionapp.category.CategoryDetail;
 import com.auctionapp.subcategory.Subcategory;
+import com.auctionapp.subcategory.SubcategoryDetail;
 import com.auctionapp.subcategory.SubcategoryService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
@@ -23,5 +23,18 @@ public class SubcategoryController extends BaseController {
         return subcategoryService.getSubcategories();
     }
 
+    @PostMapping()
+    public Integer createSubcategory(@RequestBody SubcategoryDetail subcategory) {
+        return subcategoryService.createSubcategory(subcategory);
+    }
 
+    @PutMapping("/{id}")
+    public void updateSubcategory(@PathVariable Integer id, @RequestBody SubcategoryDetail subcategory) {
+        subcategoryService.updateSubcategory(id, subcategory);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteSubcategory(@PathVariable Integer id) {
+        subcategoryService.deleteSubcategory(id);
+    }
 }

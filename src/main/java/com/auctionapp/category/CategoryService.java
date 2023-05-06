@@ -22,6 +22,9 @@ public class CategoryService {
     private CategoryRepository categoryRepository;
 
     @Autowired
+    private SubcategoryRepository subcategoryRepository;
+
+    @Autowired
     private ModelMapper modelMapper;
 
     public List<Category> getCategories() {
@@ -60,7 +63,11 @@ public class CategoryService {
         if (categoryId == null) {
             throw new AppException(AppException.VALIDATION_ERROR, "Nedostaju obavezni podaci.");
         }
-
+        var subcategoryCounter = subcategoryRepository.countByCategoryId(categoryId);
+        if (subcategoryCounter > 0) {
+            throw new AppException(AppException.VALIDATION_ERROR, "Akcija nije moguća. Postoje podkategorije pridru" +
+                    "žene ovoj kategoriji.");
+        }
         categoryRepository.deleteById(categoryId);
     }
 

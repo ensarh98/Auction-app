@@ -15,7 +15,7 @@ public class SubcategoryRecord {
     private Integer id;
 
     private String name;
-    private String categoryId;
+    private Integer categoryId;
 
     public Integer getId() {
         return id;
@@ -33,11 +33,11 @@ public class SubcategoryRecord {
         this.name = name;
     }
 
-    public String getCategoryId() {
+    public Integer getCategoryId() {
         return categoryId;
     }
 
-    public void setCategoryId(String categoryId) {
+    public void setCategoryId(Integer categoryId) {
         this.categoryId = categoryId;
     }
 }
