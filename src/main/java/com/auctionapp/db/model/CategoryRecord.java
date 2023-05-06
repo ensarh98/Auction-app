@@ -7,15 +7,14 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity()
-@Table(schema = "core", name = "subcategories")
-public class SubcategoryRecord {
+@Table(schema = "core", name = "categories")
+public class CategoryRecord {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     private String name;
-    private String categoryId;
 
     public Integer getId() {
         return id;
@@ -32,12 +31,5 @@ public class SubcategoryRecord {
     public void setName(String name) {
         this.name = name;
     }
-
-    public String getCategoryId() {
-        return categoryId;
-    }
-
-    public void setCategoryId(String categoryId) {
-        this.categoryId = categoryId;
-    }
 }
+
