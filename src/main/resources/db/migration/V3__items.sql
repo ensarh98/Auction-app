@@ -1,9 +1,9 @@
 CREATE TABLE core.items(
 	id integer NOT NULL GENERATED ALWAYS AS IDENTITY,
-	name varchar(200) NOT NULL,
-	description varchar(1000),
-	address varchar(100),
-	photos varchar,
+	name varchar(400) NOT NULL,
+	description varchar(4000),
+	address varchar(400),
+	photo varchar(4000),
 	start_price double precision NOT NULL,
 	start_date date NOT NULL,
 	end_date date NOT NULL,

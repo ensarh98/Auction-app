@@ -1,6 +1,5 @@
 package com.auctionapp.controller;
 
-import com.auctionapp.category.CategoryDetail;
 import com.auctionapp.subcategory.Subcategory;
 import com.auctionapp.subcategory.SubcategoryDetail;
 import com.auctionapp.subcategory.SubcategoryService;
