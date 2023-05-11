@@ -1,5 +1,8 @@
 package com.auctionapp.db.model;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -8,6 +11,8 @@ import javax.persistence.Table;
 
 @Entity()
 @Table(schema = "core", name = "subcategories")
+@Getter
+@Setter
 public class SubcategoryRecord {
 
     @Id
@@ -15,29 +20,6 @@ public class SubcategoryRecord {
     private Integer id;
 
     private String name;
+
     private Integer categoryId;
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Integer getCategoryId() {
-        return categoryId;
-    }
-
-    public void setCategoryId(Integer categoryId) {
-        this.categoryId = categoryId;
-    }
 }

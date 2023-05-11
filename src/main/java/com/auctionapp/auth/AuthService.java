@@ -7,6 +7,8 @@ import com.auctionapp.user.User;
 
 import javax.transaction.Transactional;
 
+import org.springframework.context.MessageSource;
+import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -22,17 +24,18 @@ public class AuthService {
 	@Autowired
 	private CryptoService cryptoService;
 
+	@Autowired
+	private MessageSource messageSource;
 	public User register(User user) {
 
 		if (user == null || user.getFirstName() == null || user.getLastName() == null
 				|| user.getEmail() == null) {
-			throw new AppException(AppException.VALIDATION_ERROR, "Nedostaju obavezni podaci.");
+			throw new AppException(AppException.VALIDATION_ERROR, messageSource.getMessage("MISSING_DATA", null, LocaleContextHolder.getLocale()));
 		}
 
 		var isExistsUserByEmail = userRepository.isExistsUserByEmail(user.getEmail()) > 0;
 		if (isExistsUserByEmail) {
-			throw new AppException(AppException.VALIDATION_ERROR,
-					"Korisnik sa unesenom email adresom postoji u sistemu.");
+			throw new AppException(AppException.VALIDATION_ERROR, messageSource.getMessage("USER_EMAIL_EXISTS", null, LocaleContextHolder.getLocale()));
 		}
 
 		var userRecord = new UserRecord();
