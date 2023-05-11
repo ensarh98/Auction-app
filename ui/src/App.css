@@ -1,0 +1,8 @@
+.page {
+  box-sizing: border-box;
+  position: relative;
+  width: 1440px;
+  height: 1564px;
+  background: #ffffff;
+  border: 1px solid #d8d8d8;
+}
