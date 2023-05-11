@@ -2,6 +2,8 @@ package com.auctionapp.auth.spring;
 
 import com.auctionapp.db.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
+import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.authentication.AuthenticationProvider;
@@ -17,6 +19,9 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
 
 	@Autowired
 	private UserRepository userRepository;
+
+	@Autowired
+	private MessageSource messageSource;
 
 	@Override
 	public Authentication authenticate(Authentication authentication) throws AuthenticationException {

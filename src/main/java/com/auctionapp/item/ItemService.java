@@ -8,6 +8,8 @@ import com.auctionapp.db.repository.SubcategoryRepository;
 import com.auctionapp.db.repository.UserRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
+import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -34,6 +36,9 @@ public class ItemService {
     @Autowired
     private BidRepository bidRepository;
 
+    @Autowired
+    private MessageSource messageSource;
+
     public List<Item> getItems() {
         var itemList = itemRepository.findAll();
 
@@ -44,26 +49,26 @@ public class ItemService {
 
     public Integer createItem(Item item) {
         if(item == null || item.getName() == null || item.getStartPrice() == null || item.getStartDate() == null || item.getEndDate() == null) {
-            throw new AppException(AppException.VALIDATION_ERROR, "Nedostaju obavezni podaci.");
+            throw new AppException(AppException.VALIDATION_ERROR, messageSource.getMessage("MISSING_DATA", null, LocaleContextHolder.getLocale()));
         }
 
         if(item.getStartPrice() < 0) {
-            throw new AppException(AppException.VALIDATION_ERROR, "Početna cijena artikla ne smije biti negativna cifra.");
+            throw new AppException(AppException.VALIDATION_ERROR, messageSource.getMessage("NEGATIVE_ITEM_PRICE", null, LocaleContextHolder.getLocale()));
         }
 
         var userRecord = userRepository.findById(item.getUserId());
         if(!userRecord.isPresent()) {
-            throw new AppException(AppException.VALIDATION_ERROR, "Prosljeđeni ID korisnika ne postoji u sistemu.");
+            throw new AppException(AppException.VALIDATION_ERROR, messageSource.getMessage("WRONG_USER_ID", null, LocaleContextHolder.getLocale()));
         }
 
         var subcategoryRecord = subcategoryRepository.findById(item.getSubcategoryId());
         if(!subcategoryRecord.isPresent()) {
-            throw new AppException(AppException.VALIDATION_ERROR, "Prosljeđeni ID podkategorije ne postoji u sistemu.");
+            throw new AppException(AppException.VALIDATION_ERROR, messageSource.getMessage("WRONG_SUBCATEGORY_ID", null, LocaleContextHolder.getLocale()));
         }
 
         Date today = new Date(); //Provjera da li je početni datum prodaje prije krajnjeg i trenutnog
         if(today.compareTo(item.getStartDate()) > 0 || item.getStartDate().compareTo(item.getEndDate()) > 0) {
-            throw new AppException(AppException.VALIDATION_ERROR, "Datumi prodaje nisu valjani.");
+            throw new AppException(AppException.VALIDATION_ERROR, messageSource.getMessage("DATE_NOT_VALID", null, LocaleContextHolder.getLocale()));
         }
 
         var itemRecord = new ItemRecord();
@@ -83,30 +88,30 @@ public class ItemService {
 
     public void updateItem(Integer itemId, Item item) {
         if(item == null || item.getName() == null || item.getStartPrice() == null || item.getStartDate() == null) {
-            throw new AppException(AppException.VALIDATION_ERROR, "Nedostaju obavezni podaci.");
+            throw new AppException(AppException.VALIDATION_ERROR, messageSource.getMessage("MISSING_DATA", null, LocaleContextHolder.getLocale()));
         }
 
         if(item.getStartPrice() < 0) {
-            throw new AppException(AppException.VALIDATION_ERROR, "Početna cijena artikla ne smije biti negativna cifra.");
+            throw new AppException(AppException.VALIDATION_ERROR, messageSource.getMessage("NEGATIVE_ITEM_PRICE", null, LocaleContextHolder.getLocale()));
         }
 
         var userRecord = userRepository.findById(item.getUserId());
         if(!userRecord.isPresent()) {
-            throw new AppException(AppException.VALIDATION_ERROR, "Prosljeđeni ID korisnika ne postoji u sistemu.");
+            throw new AppException(AppException.VALIDATION_ERROR, messageSource.getMessage("WRONG_USER_ID", null, LocaleContextHolder.getLocale()));
         }
 
         var subcategoryRecord = subcategoryRepository.findById(item.getSubcategoryId());
         if(!subcategoryRecord.isPresent()) {
-            throw new AppException(AppException.VALIDATION_ERROR, "Prosljeđeni ID podkategorije ne postoji u sistemu.");
+            throw new AppException(AppException.VALIDATION_ERROR, messageSource.getMessage("WRONG_SUBCATEGORY_ID", null, LocaleContextHolder.getLocale()));
         }
 
         Date today = new Date(); //Provjera da li je početni datum prodaje prije krajnjeg i trenutnog
         if(today.compareTo(item.getStartDate()) > 0 || item.getStartDate().compareTo(item.getEndDate()) > 0) {
-            throw new AppException(AppException.VALIDATION_ERROR, "Datumi prodaje nisu valjani.");
+            throw new AppException(AppException.VALIDATION_ERROR, messageSource.getMessage("DATE_NOT_VALID", null, LocaleContextHolder.getLocale()));
         }
 
         var itemRecord = itemRepository.findById(itemId).orElseThrow(
-                () -> new AppException(AppException.INTERNAL_ERROR, "Zapis ne postoji u sistemu."));
+                () -> new AppException(AppException.INTERNAL_ERROR, messageSource.getMessage("RECORD_NOT_EXIST", null, LocaleContextHolder.getLocale())));
         itemRecord.setName(item.getName());
         itemRecord.setDescription(item.getDescription());
         itemRecord.setAddress(item.getAddress());
@@ -122,18 +127,17 @@ public class ItemService {
 
     public void deleteItem(Integer itemId) {
         if (itemId == null) {
-            throw new AppException(AppException.VALIDATION_ERROR, "Nedostaju obavezni podaci.");
+            throw new AppException(AppException.VALIDATION_ERROR, messageSource.getMessage("MISSING_DATA", null, LocaleContextHolder.getLocale()));
         }
 
         var itemRecord = itemRepository.findById(itemId);
         if(!itemRecord.isPresent()) {
-            throw new AppException(AppException.VALIDATION_ERROR, "Zapis ne postoji u sistemu.");
+            throw new AppException(AppException.VALIDATION_ERROR, messageSource.getMessage("RECORD_NOT_EXIST", null, LocaleContextHolder.getLocale()));
         }
 
         var bidCounter = bidRepository.countBidByItemId(itemId);
         if (bidCounter > 0) {
-            throw new AppException(AppException.VALIDATION_ERROR, "Akcija nije moguća. Postoji bid pridru" +
-                    "žen ovom itemu.");
+            throw new AppException(AppException.VALIDATION_ERROR, messageSource.getMessage("BID_EXIST", null, LocaleContextHolder.getLocale()));
         }
 
         itemRepository.deleteById(itemId);

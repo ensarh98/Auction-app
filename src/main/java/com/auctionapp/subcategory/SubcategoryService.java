@@ -9,6 +9,8 @@ import com.auctionapp.db.repository.SubcategoryRepository;
 import javax.transaction.Transactional;
 
 import org.modelmapper.ModelMapper;
+import org.springframework.context.MessageSource;
+import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -28,6 +30,9 @@ public class SubcategoryService {
     @Autowired
     private ModelMapper modelMapper;
 
+    @Autowired
+    private MessageSource messageSource;
+
     public List<Subcategory> getSubcategories() {
         var subcategoryList = subcategoryRepository.findAll();
 
@@ -38,11 +43,11 @@ public class SubcategoryService {
 
     public Integer createSubcategory(SubcategoryDetail subcategory) {
         if (subcategory == null || subcategory.getName() == null || subcategory.getCategoryId() == null) {
-            throw new AppException(AppException.VALIDATION_ERROR, "Nedostaju obavezni podaci.");
+            throw new AppException(AppException.VALIDATION_ERROR, messageSource.getMessage("MISSING_DATA", null, LocaleContextHolder.getLocale()));
         }
         var categoryRecord = categoryRepository.findById(subcategory.getCategoryId());
         if(!categoryRecord.isPresent()) {
-            throw new AppException(AppException.VALIDATION_ERROR, "Prosljeđeni ID kategorije ne postoji u sistemu.");
+            throw new AppException(AppException.VALIDATION_ERROR, messageSource.getMessage("WRONG_CATEGORY_ID", null, LocaleContextHolder.getLocale()));
         }
 
         var subcategoryRecord = new SubcategoryRecord();
@@ -55,15 +60,15 @@ public class SubcategoryService {
 
     public void updateSubcategory(Integer subcategoryId, SubcategoryDetail subcategory) {
         if (subcategory == null || subcategory.getName() == null || subcategory.getCategoryId() == null) {
-            throw new AppException(AppException.VALIDATION_ERROR, "Nedostaju obavezni podaci.");
+            throw new AppException(AppException.VALIDATION_ERROR, messageSource.getMessage("MISSING_DATA", null, LocaleContextHolder.getLocale()));
         }
         var categoryRecord = categoryRepository.findById(subcategory.getCategoryId());
         if(!categoryRecord.isPresent()) {
-            throw new AppException(AppException.VALIDATION_ERROR, "Prosljeđeni ID kategorije ne postoji u sistemu.");
+            throw new AppException(AppException.VALIDATION_ERROR, messageSource.getMessage("WRONG_CATEGORY_ID", null, LocaleContextHolder.getLocale()));
         }
 
         var subcategoryRecord = subcategoryRepository.findById(subcategoryId).orElseThrow(
-                () -> new AppException(AppException.INTERNAL_ERROR, "Zapis ne postoji u sistemu."));
+                () -> new AppException(AppException.INTERNAL_ERROR, messageSource.getMessage("RECORD_NOT_EXIST", null, LocaleContextHolder.getLocale())));
         subcategoryRecord.setName(subcategory.getName());
         subcategoryRecord.setCategoryId(subcategory.getCategoryId());
 
@@ -72,7 +77,7 @@ public class SubcategoryService {
 
     public void deleteSubcategory(Integer subcategoryId) {
         if (subcategoryId == null) {
-            throw new AppException(AppException.VALIDATION_ERROR, "Nedostaju obavezni podaci.");
+            throw new AppException(AppException.VALIDATION_ERROR, messageSource.getMessage("MISSING_DATA", null, LocaleContextHolder.getLocale()));
         }
 
         subcategoryRepository.deleteById(subcategoryId);
