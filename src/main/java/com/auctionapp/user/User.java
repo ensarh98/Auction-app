@@ -3,6 +3,12 @@ package com.auctionapp.user;
 import lombok.Getter;
 import lombok.Setter;
 
+/**
+ * Represents a User in the system.
+ *
+ * @author Ensar Horozović
+ */
+
 @Getter
 @Setter
 public class User {

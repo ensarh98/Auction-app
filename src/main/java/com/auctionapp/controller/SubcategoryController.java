@@ -9,7 +9,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
-
+/**
+ * Controller class for managing subcategories.
+ * Handles requests for retrieving, creating, updating and deleting subcategories.
+ *
+ * @author Ensar Horozović
+ */
 @RestController
 @RequestMapping("/api/subcategories")
 public class SubcategoryController extends BaseController {

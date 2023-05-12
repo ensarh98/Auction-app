@@ -4,7 +4,11 @@ import com.auctionapp.db.model.BidRecord;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
-import java.util.Optional;
+/**
+ * Repository interface for managing Bid instances.
+ *
+ * @author Ensar Horozović
+ */
 
 public interface BidRepository extends JpaRepository<BidRecord, Integer> {
 

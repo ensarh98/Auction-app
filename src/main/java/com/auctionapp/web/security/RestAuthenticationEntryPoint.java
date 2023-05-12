@@ -12,6 +12,7 @@ import org.springframework.stereotype.Component;
 /**
  * Sends error instead of redirect to the login page.
  *
+ * @author Ensar Horozović
  */
 @Component
 public final class RestAuthenticationEntryPoint implements AuthenticationEntryPoint {

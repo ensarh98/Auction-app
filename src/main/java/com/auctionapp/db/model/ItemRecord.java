@@ -6,6 +6,12 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.util.Date;
 
+/**
+ * Represents an item in the system.
+ * This entity is mapped to the "users" table in the database.
+ *
+ * @author Ensar Horozović
+ */
 @Entity()
 @Table(schema = "core", name = "items")
 @Getter

@@ -1,5 +1,8 @@
 package com.auctionapp.web.security;
 
+/**
+ * @author Ensar Horozović
+ */
 public class LoginResponse {
 
 	private String name;

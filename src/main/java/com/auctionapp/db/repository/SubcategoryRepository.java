@@ -6,6 +6,11 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+/**
+ * Repository interface for managing Subcategory instances.
+ *
+ * @author Ensar Horozović
+ */
 @Repository
 public interface SubcategoryRepository extends JpaRepository<SubcategoryRecord, Integer> {
 

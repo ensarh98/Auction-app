@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.RestController;
 /**
  * Authentication API specification for Swagger documentation. Implemented by
  * Spring Security.
+ *
+ * @author Ensar Horozović
  */
 @RestController
 @RequestMapping("/")

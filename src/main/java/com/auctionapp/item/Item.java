@@ -5,6 +5,12 @@ import lombok.Setter;
 
 import java.util.Date;
 
+/**
+ * Represents an Item in the system.
+ *
+ * @author Ensar Horozović
+ */
+
 @Getter
 @Setter
 public class Item {

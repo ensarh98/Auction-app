@@ -11,6 +11,10 @@ import com.auctionapp.common.AppException;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 
+/**
+ * Base controller for handling exceptions and returning standardized error responses.
+ * @author Ensar Horozović
+ */
 @ApiResponses(value = {
 		@ApiResponse(code = 400, message = "Client Error", response = BaseController.ErrorDetails.class),
 		@ApiResponse(code = 401, message = "Unauthorized"),

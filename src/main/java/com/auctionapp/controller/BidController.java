@@ -8,7 +8,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
-
+/**
+ * Controller class for managing bids.
+ * Handles requests for retrieving, creating, updating and deleting bids.
+ *
+ * @author Ensar Horozović
+ */
 @RestController
 @RequestMapping("/api/bids")
 public class BidController extends BaseController {

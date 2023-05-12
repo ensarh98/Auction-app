@@ -34,6 +34,7 @@ build/
 **/node_modules/
 ui/node_modules/
 
+api/.idea
 ### compiled react app ###
  src/main/resources/static/**
  

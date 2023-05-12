@@ -7,6 +7,12 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+/**
+ * Controller class for managing items.
+ * Handles requests for retrieving, creating, updating and deleting items.
+ *
+ * @author Ensar Horozović
+ */
 @RestController
 @RequestMapping("/api/items")
 public class ItemController extends BaseController{

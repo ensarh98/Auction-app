@@ -15,6 +15,9 @@ import org.springframework.stereotype.Component;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 
+/**
+ * @author Ensar Horozović
+ */
 @Component
 public class LoginFailureHandler implements AuthenticationFailureHandler {
 

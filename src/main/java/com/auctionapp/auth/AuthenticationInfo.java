@@ -11,6 +11,7 @@ import org.springframework.stereotype.Component;
  * A thin wrapper around Spring Security's context to avoid direct dependency on
  * it in the rest of the application.
  *
+ * @author Ensar Horozović
  */
 @Component
 public class AuthenticationInfo {

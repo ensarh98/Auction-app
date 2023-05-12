@@ -9,6 +9,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+/**
+ * Represents a subcategory in the system.
+ * This entity is mapped to the "subcategories" table in the database.
+ *
+ * @author Ensar Horozović
+ */
 @Entity()
 @Table(schema = "core", name = "subcategories")
 @Getter
