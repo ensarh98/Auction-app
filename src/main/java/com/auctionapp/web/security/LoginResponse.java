@@ -1,15 +1,20 @@
 package com.auctionapp.web.security;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 public class LoginResponse {
 
-	private String name;
+	private Integer id;
+	private String firstName;
+	private String lastName;
+	private String email;
+	private String address;
+	private String phone;
+	private String city;
 
-	public String getName() {
-		return name;
-	}
 
-	public void setName(String name) {
-		this.name = name;
-	}
 
 }

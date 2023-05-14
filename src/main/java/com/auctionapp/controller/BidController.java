@@ -8,8 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
-
 @RestController
+@CrossOrigin
 @RequestMapping("/api/bids")
 public class BidController extends BaseController {
 

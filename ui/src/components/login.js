@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router";
 import "./login.css";
 
@@ -15,26 +15,25 @@ export default function Login(props) {
     setEmail("");
     setPassword("");
 
-    fetch("http://localhost:8080/user/login", {
+    let loginUrl = new URL("http://localhost:8080/login");
+    let loginParams = { username: user.email, password: user.password };
+    loginUrl.search = new URLSearchParams(loginParams);
+
+    fetch(loginUrl, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(user),
     })
       .then((response) => {
-        if (response.ok) {
-          return response.json();
-        } else {
+        if (!response.ok) {
           throw new Error("Authentication failed");
+        } else {
+          return response.json();
         }
       })
-      .then((user) => {
-        if (user === null) {
-          navigate("/login");
-        } else {
-          props.setUser(user);
-          props.setCookie(user);
-          navigate("/");
-        }
+      .then((data) => {
+        props.setLoggedIn(true);
+        props.setUser(data);
+        navigate("/");
       })
       .catch((error) => console.error(error));
   };

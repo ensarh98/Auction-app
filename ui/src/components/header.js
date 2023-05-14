@@ -20,11 +20,19 @@ export default function Header(props) {
         </span>
       </div>
       <div className="frame1">
-        <Link to={"/login"} className="loginText">
+        <Link
+          to={"/login"}
+          className="loginText"
+          onClick={() => props.onClickLogin()}
+        >
           Login
         </Link>
         <span className="orText">or</span>
-        <Link to={"/register"} className="createText">
+        <Link
+          to={"/register"}
+          className="createText"
+          onClick={() => props.onClickRegister()}
+        >
           Create an account
         </Link>
       </div>

@@ -11,6 +11,7 @@ import java.util.List;
 
 
 @RestController
+@CrossOrigin
 @RequestMapping("/api/subcategories")
 public class SubcategoryController extends BaseController {
 

@@ -11,11 +11,8 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.factory.PasswordEncoderFactories;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.logout.HttpStatusReturningLogoutSuccessHandler;
 import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;
-import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 
 @Configuration
 @EnableGlobalMethodSecurity(prePostEnabled = true)
@@ -51,7 +48,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.authorizeRequests().antMatchers("/api/**").authenticated().and().formLogin()
 				.successHandler(loginSuccessHandler).failureHandler(loginFailureHandler).and().logout()
 				.logoutSuccessHandler(logoutSuccessHandler).deleteCookies("JSESSIONID").invalidateHttpSession(false)
-				.and().csrf().disable();
+				.and().csrf().disable().cors();
 	}
 
 	@Bean
@@ -63,5 +60,4 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	public ModelMapper modelMapper() {
 		return new ModelMapper();
 	}
-
 }
