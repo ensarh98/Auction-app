@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
 import "./register.css";
 
-export default function Register() {
+export default function Register(props) {
   const navigate = useNavigate();
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -20,7 +20,7 @@ export default function Register() {
     setEmail("");
     setPassword("");
 
-    fetch("http://localhost:8080/user/register", {
+    fetch("http://localhost:8080/register", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(user),
@@ -28,8 +28,10 @@ export default function Register() {
       .then((response) => response.json())
       .then((data) => {
         if (data === null) {
+          props.setLoggedIn(false);
           navigate("/register");
         } else {
+          props.setLoggedIn(true);
           navigate("/login");
         }
       })

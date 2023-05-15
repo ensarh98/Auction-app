@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
 import Home from "./components/home";
@@ -7,10 +7,26 @@ import Login from "./components/login";
 import Header from "./components/header";
 import Footer from "./components/footer";
 import HeaderPage from "./components/headerPage";
+import MyAccount from "./components/myAccount";
 
-function App(props) {
-  const [user, setUser] = useState("");
-  const [loggedIn, setLoggedIn] = useState(false);
+function App() {
+  const [loggedIn, setLoggedIn] = useState(() => {
+    const storedLoggedIn = localStorage.getItem("loggedIn");
+    return storedLoggedIn ? JSON.parse(storedLoggedIn) : false;
+  });
+
+  const [user, setUser] = useState(() => {
+    const storedUser = localStorage.getItem("user");
+    return storedUser ? JSON.parse(storedUser) : null;
+  });
+
+  useEffect(() => {
+    localStorage.setItem("user", JSON.stringify(user));
+  }, [user]);
+
+  useEffect(() => {
+    localStorage.setItem("loggedIn", JSON.stringify(loggedIn));
+  }, [loggedIn]);
 
   function handleClickLogin() {
     setLoggedIn(true);
@@ -24,7 +40,7 @@ function App(props) {
     <div className="page">
       <Router>
         {user ? (
-          <HeaderPage user={user} />
+          <HeaderPage user={user} setLoggedIn={setLoggedIn} setUser={setUser} />
         ) : (
           <Header
             onClickLogin={handleClickLogin}
@@ -46,6 +62,8 @@ function App(props) {
               element={<Register setLoggedIn={setLoggedIn} />}
             />
           )}
+
+          <Route path="/account" element={<MyAccount />} />
         </Routes>
 
         <Footer />

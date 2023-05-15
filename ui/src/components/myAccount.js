@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./myAccount.css";
 import AddIcon from "@mui/icons-material/Add";
 import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
@@ -8,7 +8,17 @@ import ListOutlinedIcon from "@mui/icons-material/ListOutlined";
 import PersonIcon from "@mui/icons-material/Person";
 
 export default function MyAccount() {
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [dayOfDate, setDayOfDate] = useState("");
+  const [monthOfDate, setMonthOfDate] = useState("");
+  const [yearOfDate, setYearOfDate] = useState("");
+
   function handleAddItem() {}
+
+  function saveInfoOnClick() {}
 
   return (
     <div className="frame450">
@@ -39,7 +49,7 @@ export default function MyAccount() {
         </div>
       </div>
 
-      <div className="frame449">
+      <form className="frame449">
         <div className="frame447">
           <div className="frame441">
             <div className="frame380">
@@ -67,17 +77,34 @@ export default function MyAccount() {
               <div className="frame415">
                 <div className="inputF">
                   <span className="fnText">First Name</span>
-                  <input className="frame239" type="text" placeholder="John" />
+                  <input
+                    className="frame239"
+                    type="text"
+                    name="firstName"
+                    value={firstName}
+                    onChange={(e) => setLastName(e.target.value)}
+                    placeholder="John"
+                  />
                 </div>
                 <div className="inputF">
                   <span className="fnText">Last Name</span>
-                  <input className="frame239" type="text" placeholder="Doe" />
+                  <input
+                    className="frame239"
+                    type="text"
+                    name="lastName"
+                    value={lastName}
+                    onChange={(e) => setLastName(e.target.value)}
+                    placeholder="Doe"
+                  />
                 </div>
                 <div className="inputF">
                   <span className="fnText">Email Address</span>
                   <input
                     className="frame239"
                     type="email"
+                    name="email"
+                    value={email}
+                    onChange={(e) => setLastName(e.target.value)}
                     placeholder="user@domain.com"
                   />
                 </div>
@@ -88,6 +115,8 @@ export default function MyAccount() {
                       className="frame239d"
                       placeholder="DD"
                       type="number"
+                      value={dayOfDate}
+                      onChange={(e) => setLastName(e.target.value)}
                       min="1"
                       max="31"
                     />
@@ -97,6 +126,8 @@ export default function MyAccount() {
                       className="frame239d"
                       placeholder="MM"
                       type="number"
+                      value={monthOfDate}
+                      onChange={(e) => setLastName(e.target.value)}
                       min="1"
                       max="12"
                     />
@@ -106,6 +137,8 @@ export default function MyAccount() {
                       className="frame239d"
                       placeholder="YYYY"
                       type="number"
+                      value={yearOfDate}
+                      onChange={(e) => setLastName(e.target.value)}
                       min="1800"
                       max="2500"
                     />
@@ -128,9 +161,15 @@ export default function MyAccount() {
           </div>
         </div>
         <div className="ctaSaveInfo">
-          <div className="saveInfoButton">SAVE INFO</div>
+          <div
+            className="saveInfoButton"
+            type="submit"
+            onClick={() => saveInfoOnClick}
+          >
+            SAVE INFO
+          </div>
         </div>
-      </div>
+      </form>
     </div>
   );
 }

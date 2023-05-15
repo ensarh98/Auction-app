@@ -15,6 +15,4 @@ public class LoginResponse {
 	private String phone;
 	private String city;
 
-
-
 }

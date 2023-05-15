@@ -4,16 +4,41 @@ import FacebookIcon from "@mui/icons-material/Facebook";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router";
 
 export default function HeaderPage(props) {
+  const navigate = useNavigate();
   const [showMenu, setShowMenu] = useState(false);
+  const [activeLink, setActiveLink] = useState("");
 
   const handleMenuClick = () => {
     setShowMenu(!showMenu);
   };
 
+  const handleLinkClick = (link) => {
+    setActiveLink(link);
+  };
+
   const handleLogout = () => {
-    props.removeCookie();
+    fetch("http://localhost:8080/logout", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Logout failed");
+        } else {
+          console.log(response);
+          return response;
+        }
+      })
+      .then((data) => {
+        console.log(data);
+        props.setLoggedIn(true);
+        props.setUser(null);
+        navigate("/login");
+      })
+      .catch((error) => console.error(error));
   };
   return (
     <div className="frame170hp">
@@ -44,7 +69,11 @@ export default function HeaderPage(props) {
           </div>
         </header>
         <div className="frame108hp">
-          <Link to="/" className="auction-app-logo-hp"></Link>
+          <Link
+            to="/"
+            className="auction-app-logo-hp"
+            onClick={() => handleLinkClick("")}
+          ></Link>
           <div className="frame107hp">
             <div style={{ position: "relative" }}>
               <input
@@ -74,11 +103,27 @@ export default function HeaderPage(props) {
               </div>
             </div>
             <div className="frame16">
-              <Link to="/" className="homeText">
+              <Link
+                to="/"
+                className={`homeText ${activeLink === "home" ? "active" : ""}`}
+                onClick={() => handleLinkClick("home")}
+              >
                 HOME
               </Link>
-              <span className="shopText">SHOP</span>
-              <Link to="/myAccount" className="myaccountText">
+              <Link
+                to="/"
+                className={`shopText ${activeLink === "shop" ? "active" : ""}`}
+                onClick={() => handleLinkClick("shop")}
+              >
+                SHOP
+              </Link>
+              <Link
+                to="/account"
+                className={`myaccountText ${
+                  activeLink === "account" ? "active" : ""
+                }`}
+                onClick={() => handleLinkClick("account")}
+              >
                 MY ACCOUNT
               </Link>
             </div>

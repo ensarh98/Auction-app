@@ -148,12 +148,12 @@ input ::-webkit-input-placeholder {
   height: 24px;
   font-family: "Lato";
   font-style: normal;
-  font-weight: 700;
-  font-size: 16px;
+  font-weight: 400;
+  font-size: 14px;
   line-height: 24px;
-  color: #8367d8;
+  color: #252525;
   flex: none;
-  order: 0;
+  order: 1;
   flex-grow: 0;
   text-decoration: none;
 }
@@ -167,11 +167,12 @@ input ::-webkit-input-placeholder {
   line-height: 24px;
   color: #252525;
   flex: none;
-  order: 1;
+  order: 2;
   flex-grow: 0;
+  text-decoration: none;
 }
 .myaccountText {
-  width: 96px;
+  width: 108px;
   height: 24px;
   font-family: "Lato";
   font-style: normal;
@@ -180,7 +181,7 @@ input ::-webkit-input-placeholder {
   line-height: 24px;
   color: #252525;
   flex: none;
-  order: 2;
+  order: 3;
   flex-grow: 0;
   text-decoration: none;
 }
@@ -214,4 +215,14 @@ input ::-webkit-input-placeholder {
   flex-grow: 0;
   align-self: center;
   cursor: pointer;
+}
+
+.active {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
+  color: #8367d8;
+  flex: none;
+  flex-grow: 0;
+  text-decoration: none;
 }
