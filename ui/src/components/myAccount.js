@@ -11,14 +11,14 @@ export default function MyAccount() {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
   const [dayOfDate, setDayOfDate] = useState("");
   const [monthOfDate, setMonthOfDate] = useState("");
   const [yearOfDate, setYearOfDate] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
 
   function handleAddItem() {}
 
-  function saveInfoOnClick() {}
+  function handleSubmit() {}
 
   return (
     <div className="frame450">
@@ -49,7 +49,7 @@ export default function MyAccount() {
         </div>
       </div>
 
-      <form className="frame449">
+      <form className="frame449" onSubmit={handleSubmit}>
         <div className="frame447">
           <div className="frame441">
             <div className="frame380">
@@ -82,8 +82,9 @@ export default function MyAccount() {
                     type="text"
                     name="firstName"
                     value={firstName}
-                    onChange={(e) => setLastName(e.target.value)}
+                    onChange={(e) => setFirstName(e.target.value)}
                     placeholder="John"
+                    required
                   />
                 </div>
                 <div className="inputF">
@@ -95,6 +96,7 @@ export default function MyAccount() {
                     value={lastName}
                     onChange={(e) => setLastName(e.target.value)}
                     placeholder="Doe"
+                    required
                   />
                 </div>
                 <div className="inputF">
@@ -104,8 +106,9 @@ export default function MyAccount() {
                     type="email"
                     name="email"
                     value={email}
-                    onChange={(e) => setLastName(e.target.value)}
+                    onChange={(e) => setEmail(e.target.value)}
                     placeholder="user@domain.com"
+                    required
                   />
                 </div>
                 <div className="frame438">
@@ -116,9 +119,10 @@ export default function MyAccount() {
                       placeholder="DD"
                       type="number"
                       value={dayOfDate}
-                      onChange={(e) => setLastName(e.target.value)}
+                      onChange={(e) => setDayOfDate(e.target.value)}
                       min="1"
                       max="31"
+                      required
                     />
                   </div>
                   <div className="dateInputMM">
@@ -127,9 +131,10 @@ export default function MyAccount() {
                       placeholder="MM"
                       type="number"
                       value={monthOfDate}
-                      onChange={(e) => setLastName(e.target.value)}
-                      min="1"
-                      max="12"
+                      onChange={(e) => setMonthOfDate(e.target.value)}
+                      min={1}
+                      max={12}
+                      required
                     />
                   </div>
                   <div className="dateInputYYYY">
@@ -138,9 +143,10 @@ export default function MyAccount() {
                       placeholder="YYYY"
                       type="number"
                       value={yearOfDate}
-                      onChange={(e) => setLastName(e.target.value)}
+                      onChange={(e) => setYearOfDate(e.target.value)}
                       min="1800"
                       max="2500"
+                      required
                     />
                   </div>
                 </div>
@@ -148,8 +154,13 @@ export default function MyAccount() {
                   <span className="phoneNumberText">Phone Number</span>
                   <div className="frame439">
                     <input
+                      type="text"
                       className="frame239Phone"
+                      name="phoneNumber"
+                      value={phoneNumber}
+                      onChange={(e) => setPhoneNumber(e.target.value)}
                       placeholder="+32534231564"
+                      required
                     />
                     <div className="frame240">
                       <span className="notVerified">Not verified</span>
@@ -160,15 +171,11 @@ export default function MyAccount() {
             </div>
           </div>
         </div>
-        <div className="ctaSaveInfo">
-          <div
-            className="saveInfoButton"
-            type="submit"
-            onClick={() => saveInfoOnClick}
-          >
+        <button className="ctaSaveInfo">
+          <div className="saveInfoButton" type="submit">
             SAVE INFO
           </div>
-        </div>
+        </button>
       </form>
     </div>
   );

@@ -5,15 +5,14 @@ import InstagramIcon from "@mui/icons-material/Instagram";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router";
+import Button from "@mui/material/Button";
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
+import PopupState, { bindTrigger, bindMenu } from "material-ui-popup-state";
 
 export default function HeaderPage(props) {
   const navigate = useNavigate();
-  const [showMenu, setShowMenu] = useState(false);
   const [activeLink, setActiveLink] = useState("");
-
-  const handleMenuClick = () => {
-    setShowMenu(!showMenu);
-  };
 
   const handleLinkClick = (link) => {
     setActiveLink(link);
@@ -56,16 +55,9 @@ export default function HeaderPage(props) {
             </span>
           </div>
           <div className="frame1">
-            <Link to="" className="createText" onClick={handleMenuClick}>
+            <div className="createText">
               {"Hi, " + props.user.firstName + " " + props.user.lastName}
-            </Link>
-            {showMenu && (
-              <div className="frame1">
-                <div className="logoutText" onClick={handleLogout}>
-                  Logout
-                </div>
-              </div>
-            )}
+            </div>
           </div>
         </header>
         <div className="frame108hp">
@@ -117,15 +109,45 @@ export default function HeaderPage(props) {
               >
                 SHOP
               </Link>
-              <Link
-                to="/account"
-                className={`myaccountText ${
-                  activeLink === "account" ? "active" : ""
-                }`}
-                onClick={() => handleLinkClick("account")}
-              >
-                MY ACCOUNT
-              </Link>
+              <PopupState variant="popover" popupId="demo-popup-menu">
+                {(popupState) => (
+                  <React.Fragment>
+                    <Button
+                      variant="text"
+                      {...bindTrigger(popupState)}
+                      className={`myaccountText ${
+                        activeLink === "account" ? "active" : ""
+                      }`}
+                      //onClick={() => handleLinkClick("account")}
+                    >
+                      MY ACCOUNT
+                    </Button>
+                    <Menu {...bindMenu(popupState)}>
+                      <MenuItem onClick={popupState.close}>
+                        <Link to={"/account"} className="linkItem">
+                          Profile
+                        </Link>
+                      </MenuItem>
+                      <MenuItem onClick={popupState.close}>
+                        <Link to={"/"} className="linkItem">
+                          Become Seller
+                        </Link>
+                      </MenuItem>
+                      <MenuItem onClick={popupState.close}>Your Bids</MenuItem>
+                      <MenuItem onClick={popupState.close}>Wishlist</MenuItem>
+                      <MenuItem onClick={popupState.close}>Settings</MenuItem>
+                      <MenuItem
+                        onClick={() => {
+                          popupState.close();
+                          handleLogout();
+                        }}
+                      >
+                        Logout
+                      </MenuItem>
+                    </Menu>
+                  </React.Fragment>
+                )}
+              </PopupState>
             </div>
           </div>
         </div>

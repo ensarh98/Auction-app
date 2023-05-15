@@ -226,3 +226,43 @@ input ::-webkit-input-placeholder {
   flex-grow: 0;
   text-decoration: none;
 }
+
+.css-1e6y48t-MuiButtonBase-root-MuiButton-root {
+  width: 108px;
+  height: 24px;
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 24px;
+  color: #252525 !important;
+  padding: 0 !important;
+  flex: none;
+  order: 3;
+  flex-grow: 0;
+  text-decoration: none;
+}
+
+.css-1ka5eyc-MuiPaper-root-MuiMenu-paper-MuiPopover-paper {
+  color: #252525 !important;
+  border-radius: 0px !important;
+  box-shadow: 0px 0px 0px 0px !important;
+  border: 1px solid #d8d8d8;
+}
+
+.MuiPaper-root {
+  top: 118px !important;
+  left: 1137px !important;
+}
+
+.css-kk1bwy-MuiButtonBase-root-MuiMenuItem-root {
+  font-family: "Lato" !important;
+  font-style: normal !important;
+  font-weight: 400 !important;
+  color: #252525 !important;
+}
+
+.linkItem {
+  text-decoration: none !important;
+  color: #252525 !important;
+}

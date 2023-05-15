@@ -8,6 +8,8 @@ import Header from "./components/header";
 import Footer from "./components/footer";
 import HeaderPage from "./components/headerPage";
 import MyAccount from "./components/myAccount";
+import SetPrices from "./components/setPrices";
+import AboutProduct from "./components/aboutProduct";
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(() => {
@@ -50,7 +52,7 @@ function App() {
 
         <Routes>
           {user ? (
-            <Route path="/" element={<Home />}></Route>
+            <Route path="/" element={<SetPrices />}></Route>
           ) : loggedIn ? (
             <Route
               path="/login"
