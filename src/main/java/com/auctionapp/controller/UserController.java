@@ -1,10 +1,17 @@
 package com.auctionapp.controller;
 
+import com.auctionapp.attachment.Attachment;
 import com.auctionapp.attachment.AttachmentService;
+import com.auctionapp.common.AppException;
+import com.auctionapp.db.model.AttachmentRecord;
+import com.auctionapp.db.repository.UserRepository;
 import com.auctionapp.item.Item;
-import com.auctionapp.item.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
+import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -13,31 +20,8 @@ import java.util.List;
 
 @RestController
 @CrossOrigin
-@RequestMapping("/api/items")
-public class ItemController extends BaseController{
-
-    @Autowired
-    private ItemService itemService;
-
-    @GetMapping()
-    public List<Item> getItems() {
-        return itemService.getItems();
-    }
-
-    @PostMapping()
-    public Integer createItem(@RequestBody Item item) {
-        return itemService.createItem(item);
-    }
-
-    @PutMapping("/{id}")
-    public void updateItem(@PathVariable Integer id, @RequestBody Item item) {
-        itemService.updateItem(id, item);
-    }
-
-    @DeleteMapping("/{id}")
-    public void deleteItem(@PathVariable Integer id) {
-        itemService.deleteItem(id);
-    }
+@RequestMapping("/api/users")
+public class UserController extends BaseController {
 
     @Autowired
     private AttachmentService attachmentService;

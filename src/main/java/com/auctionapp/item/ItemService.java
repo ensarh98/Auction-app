@@ -60,7 +60,7 @@ public class ItemService {
         if(!userRecord.isPresent()) {
             throw new AppException(AppException.VALIDATION_ERROR, messageSource.getMessage("WRONG_USER_ID", null, LocaleContextHolder.getLocale()));
         }
-
+        System.out.println("TUSAM");
         var subcategoryRecord = subcategoryRepository.findById(item.getSubcategoryId());
         if(!subcategoryRecord.isPresent()) {
             throw new AppException(AppException.VALIDATION_ERROR, messageSource.getMessage("WRONG_SUBCATEGORY_ID", null, LocaleContextHolder.getLocale()));
@@ -75,7 +75,7 @@ public class ItemService {
         itemRecord.setName(item.getName());
         itemRecord.setDescription(item.getDescription());
         itemRecord.setAddress(item.getAddress());
-        itemRecord.setPhoto(item.getPhoto());
+        itemRecord.setPhotoId(item.getPhotoId());
         itemRecord.setStartPrice(item.getStartPrice());
         itemRecord.setStartDate(item.getStartDate());
         itemRecord.setEndDate(item.getEndDate());
@@ -115,7 +115,7 @@ public class ItemService {
         itemRecord.setName(item.getName());
         itemRecord.setDescription(item.getDescription());
         itemRecord.setAddress(item.getAddress());
-        itemRecord.setPhoto(item.getPhoto());
+        itemRecord.setPhotoId(item.getPhotoId());
         itemRecord.setStartPrice(item.getStartPrice());
         itemRecord.setStartDate(item.getStartDate());
         itemRecord.setEndDate(item.getEndDate());

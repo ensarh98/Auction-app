@@ -15,4 +15,6 @@ public interface UserRepository extends JpaRepository<UserRecord, Integer> {
             select count(u.id) from UserRecord as u where u.email = :email
             """)
 	public Integer isExistsUserByEmail(String email);
+
+	public Integer findUserRecordByPhotoId(Integer id);
 }

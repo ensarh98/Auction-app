@@ -22,7 +22,7 @@ public class ItemRecord {
 
     private String address;
 
-    private String photo;
+    private Integer photoId;
 
     private Double startPrice;
 
