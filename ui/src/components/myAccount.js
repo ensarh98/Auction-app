@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./myAccount.css";
+import "../css/myAccount.css";
 import AddIcon from "@mui/icons-material/Add";
 import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";

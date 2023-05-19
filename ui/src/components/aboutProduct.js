@@ -1,7 +1,13 @@
 import React from "react";
-import "./aboutProduct.css";
+import "../css/aboutProduct.css";
+import { Link } from "react-router-dom";
 
-export default function AboutProduct() {
+export default function AboutProduct(props) {
+  const handlePhotoChange = (e) => {
+    const selectedPhoto = e.target.files[0];
+    props.handleSetPhoto(selectedPhoto);
+  };
+
   return (
     <div>
       <div className="group160sp">
@@ -27,13 +33,24 @@ export default function AboutProduct() {
         <div className="frame435sp">
           <div className="inputItemsp">
             <span className="whatDoYouSellText">What do you sell?</span>
-            <input className="frame230sp" type="text" />
+            <input
+              className="frame230sp"
+              type="text"
+              name="name"
+              value={props.name}
+              onChange={(e) => props.handleSetName(e.target.value)}
+            />
             <div className="wordsCharactersText">2-5 words (60 characters)</div>
           </div>
           <div className="frame227sp">
             <div className="dropdownCategory">
-              <select className="frame40sp" name="category" id="category">
-                <option disabled selected value="category">
+              <select
+                defaultValue="category"
+                className="frame40sp"
+                name="category"
+                onChange={(e) => props.handleSetCategory(e.target.value)}
+              >
+                <option disabled value="category">
                   Select Category
                 </option>
                 <option value="clothes">Clothes</option>
@@ -49,19 +66,21 @@ export default function AboutProduct() {
             </div> */}
           </div>
 
-          {/* <div className="frame229sp">
+          <div className="frame229sp">
             <div className="textArea">
               <span className="descriptionTextsp">Description</span>
               <textarea
                 id="description"
                 name="description"
                 className="frame228sp"
+                value={props.description}
+                onChange={(e) => props.handleSetDescription(e.target.value)}
               ></textarea>
               <div className="wordsCharactersDescText">
                 2-5 words (60 characters)
               </div>
             </div>
-          </div> */}
+          </div>
           <label className="inputPhoto" htmlFor="photo">
             <div className="frame233sp">
               <div className="frame231sp">
@@ -77,17 +96,18 @@ export default function AboutProduct() {
               </div>
               <input
                 type="file"
-                id="photo"
                 name="photo"
+                id="photo"
                 className="uploadPhotosInput"
+                onChange={handlePhotoChange}
               />
             </div>
           </label>
-          <div className="frame230ab">
+          <Link to="/setPrices" className="frame230abb">
             <div className="nextButtonsap">
               <span className="nextTextab">NEXT</span>
             </div>
-          </div>
+          </Link>
         </div>
       </div>
     </div>

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./headerPage.css";
+import "../css/headerPage.css";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import TwitterIcon from "@mui/icons-material/Twitter";

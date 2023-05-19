@@ -1,7 +1,10 @@
 import React from "react";
-import "./setPrices.css";
+import "../css/setPrices.css";
+import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
+import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import { Link } from "react-router-dom";
 
-export default function AboutProduct() {
+export default function AboutProduct(props) {
   return (
     <div>
       <div className="group160ab">
@@ -25,27 +28,67 @@ export default function AboutProduct() {
         <div className="frame275ab">
           <div className="inputPriceab">
             <span className="yourStartPriceab">Your start Price</span>{" "}
-            <div className="frame236ab">
-              <div className="reactangle38ab">
+            <div className="frame234ab">
+              <div className="frame236ab">
                 <div className="frame235ab">
                   <span className="dollarText">$</span>
                   <span className="line13ab"></span>
                 </div>
-                <input className="frame234ab" type="text" />
+              </div>
+              <input
+                className="reactangle38ab"
+                type="text"
+                name="startPrice"
+                value={props.startPrice}
+                onChange={(e) => props.handleSetStartPrice(e.target.value)}
+              />
+            </div>
+          </div>
+          <div className="frame274ab">
+            <div className="frame238ab">
+              <div className="inputStartDate">
+                <span className="startDateText">Start date</span>
+                <div className="frame237abs">
+                  <input
+                    type="date"
+                    name="startDate"
+                    className="frame40ab"
+                    value={props.startDate}
+                    onChange={(e) => props.handleSetStartDate(e.target.value)}
+                  ></input>
+                </div>
+              </div>
+              <div className="inputEndDate">
+                <span className="endDateText">End date</span>
+                <div className="frame237abe">
+                  <input
+                    type="date"
+                    name="endDate"
+                    className="frame40ab"
+                    value={props.endDate}
+                    onChange={(e) => props.handleSetEndDate(e.target.value)}
+                  ></input>
+                </div>
               </div>
             </div>
+            <span className="pricesTextDescAb">
+              The auction will be automatically closed when the end time comes.
+              The highest bid will win the auction.
+            </span>
+          </div>
+
+          <div className="frame456ab">
+            <Link to="/aboutProduct" className="backButtonab">
+              <ArrowBackIosIcon />
+              <span className="backButtonText">BACK</span>
+            </Link>
+            <Link to="/address" className="nextButtonab">
+              <span className="nextButtonText">NEXT</span>
+              <ArrowForwardIosIcon />
+            </Link>
           </div>
         </div>
       </div>
     </div>
   );
 }
-<div className="frame435ab">
-  <div className="frame227ab"></div>
-
-  <div className="frame230ab">
-    <div className="nextButtonsap">
-      <span className="nextTextab">NEXT</span>
-    </div>
-  </div>
-</div>;
