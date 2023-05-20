@@ -16,7 +16,7 @@ public class AttachmentRecord {
 
     private String filename;
 
-    private byte[] originalFilename;
+    private byte[] data;
 
     private String type;
 }

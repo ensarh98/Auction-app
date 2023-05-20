@@ -1,5 +1,7 @@
 package com.auctionapp.item;
 
+import com.auctionapp.attachment.Attachment;
+import com.auctionapp.attachment.AttachmentService;
 import com.auctionapp.common.AppException;
 import com.auctionapp.db.model.ItemRecord;
 import com.auctionapp.db.repository.BidRepository;
@@ -11,8 +13,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.transaction.Transactional;
+import java.io.IOException;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -37,37 +41,39 @@ public class ItemService {
     private BidRepository bidRepository;
 
     @Autowired
+    private AttachmentService attachmentService;
+
+    @Autowired
     private MessageSource messageSource;
 
     public List<Item> getItems() {
         var itemList = itemRepository.findAll();
 
         return itemList.stream()
-            .map(item -> modelMapper.map(item, Item.class))
-            .collect(Collectors.toList());
+                .map(item -> modelMapper.map(item, Item.class))
+                .collect(Collectors.toList());
     }
 
     public Integer createItem(Item item) {
-        if(item == null || item.getName() == null || item.getStartPrice() == null || item.getStartDate() == null || item.getEndDate() == null) {
+        if (item == null || item.getName() == null || item.getStartPrice() == null || item.getStartDate() == null || item.getEndDate() == null) {
             throw new AppException(AppException.VALIDATION_ERROR, messageSource.getMessage("MISSING_DATA", null, LocaleContextHolder.getLocale()));
         }
 
-        if(item.getStartPrice() < 0) {
+        if (item.getStartPrice() < 0) {
             throw new AppException(AppException.VALIDATION_ERROR, messageSource.getMessage("NEGATIVE_ITEM_PRICE", null, LocaleContextHolder.getLocale()));
         }
 
         var userRecord = userRepository.findById(item.getUserId());
-        if(!userRecord.isPresent()) {
+        if (!userRecord.isPresent()) {
             throw new AppException(AppException.VALIDATION_ERROR, messageSource.getMessage("WRONG_USER_ID", null, LocaleContextHolder.getLocale()));
         }
-        System.out.println("TUSAM");
         var subcategoryRecord = subcategoryRepository.findById(item.getSubcategoryId());
-        if(!subcategoryRecord.isPresent()) {
+        if (!subcategoryRecord.isPresent()) {
             throw new AppException(AppException.VALIDATION_ERROR, messageSource.getMessage("WRONG_SUBCATEGORY_ID", null, LocaleContextHolder.getLocale()));
         }
 
         Date today = new Date(); //Provjera da li je početni datum prodaje prije krajnjeg i trenutnog
-        if(today.compareTo(item.getStartDate()) > 0 || item.getStartDate().compareTo(item.getEndDate()) > 0) {
+        if (today.compareTo(item.getStartDate()) > 0 || item.getStartDate().compareTo(item.getEndDate()) > 0) {
             throw new AppException(AppException.VALIDATION_ERROR, messageSource.getMessage("DATE_NOT_VALID", null, LocaleContextHolder.getLocale()));
         }
 
@@ -87,26 +93,26 @@ public class ItemService {
     }
 
     public void updateItem(Integer itemId, Item item) {
-        if(item == null || item.getName() == null || item.getStartPrice() == null || item.getStartDate() == null) {
+        if (item == null || item.getName() == null || item.getStartPrice() == null || item.getStartDate() == null) {
             throw new AppException(AppException.VALIDATION_ERROR, messageSource.getMessage("MISSING_DATA", null, LocaleContextHolder.getLocale()));
         }
 
-        if(item.getStartPrice() < 0) {
+        if (item.getStartPrice() < 0) {
             throw new AppException(AppException.VALIDATION_ERROR, messageSource.getMessage("NEGATIVE_ITEM_PRICE", null, LocaleContextHolder.getLocale()));
         }
 
         var userRecord = userRepository.findById(item.getUserId());
-        if(!userRecord.isPresent()) {
+        if (!userRecord.isPresent()) {
             throw new AppException(AppException.VALIDATION_ERROR, messageSource.getMessage("WRONG_USER_ID", null, LocaleContextHolder.getLocale()));
         }
 
         var subcategoryRecord = subcategoryRepository.findById(item.getSubcategoryId());
-        if(!subcategoryRecord.isPresent()) {
+        if (!subcategoryRecord.isPresent()) {
             throw new AppException(AppException.VALIDATION_ERROR, messageSource.getMessage("WRONG_SUBCATEGORY_ID", null, LocaleContextHolder.getLocale()));
         }
 
         Date today = new Date(); //Provjera da li je početni datum prodaje prije krajnjeg i trenutnog
-        if(today.compareTo(item.getStartDate()) > 0 || item.getStartDate().compareTo(item.getEndDate()) > 0) {
+        if (today.compareTo(item.getStartDate()) > 0 || item.getStartDate().compareTo(item.getEndDate()) > 0) {
             throw new AppException(AppException.VALIDATION_ERROR, messageSource.getMessage("DATE_NOT_VALID", null, LocaleContextHolder.getLocale()));
         }
 
@@ -131,7 +137,7 @@ public class ItemService {
         }
 
         var itemRecord = itemRepository.findById(itemId);
-        if(!itemRecord.isPresent()) {
+        if (!itemRecord.isPresent()) {
             throw new AppException(AppException.VALIDATION_ERROR, messageSource.getMessage("RECORD_NOT_EXIST", null, LocaleContextHolder.getLocale()));
         }
 
@@ -141,6 +147,30 @@ public class ItemService {
         }
 
         itemRepository.deleteById(itemId);
+    }
+
+    public void uploadPhotoItem(Integer itemId, MultipartFile file) throws IOException {
+        if (itemId == null) {
+            throw new AppException(AppException.VALIDATION_ERROR, messageSource.getMessage("MISSING_DATA", null, LocaleContextHolder.getLocale()));
+        }
+
+        var item = itemRepository.findById(itemId).orElseThrow();
+        var attachmentId = attachmentService.createAttachment(file);
+        item.setPhotoId(attachmentId);
+
+        itemRepository.save(item);
+    }
+
+    public Attachment getItemPhoto(Integer itemId) {
+        if (itemId == null) {
+            throw new AppException(AppException.VALIDATION_ERROR, messageSource.getMessage("MISSING_DATA", null, LocaleContextHolder.getLocale()));
+        }
+        var item = itemRepository.findById(itemId).orElseThrow();
+        if (item.getPhotoId() != null) {
+            return attachmentService.getAttachment(item.getPhotoId());
+        }
+        return null;
+
     }
 
 }

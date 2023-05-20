@@ -21,7 +21,7 @@ CREATE TABLE core.users (
 CREATE TABLE core.attachments(
 	 id integer NOT NULL,
 	 filename varchar(4000) NOT NULL,
-	 original_filename BYTEA NOT NULL,
+	 data BYTEA NOT NULL,
 	 type varchar(50) NOT NULL,
 	 CONSTRAINT attachments_pk PRIMARY KEY (id)
 );

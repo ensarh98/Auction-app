@@ -1,10 +1,11 @@
 package com.auctionapp.controller;
 
-import com.auctionapp.attachment.AttachmentService;
 import com.auctionapp.item.Item;
 import com.auctionapp.item.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -39,18 +40,15 @@ public class ItemController extends BaseController{
         itemService.deleteItem(id);
     }
 
-    @Autowired
-    private AttachmentService attachmentService;
-
     @ResponseStatus(value = HttpStatus.OK)
-    @PostMapping("/upload")
-    public void uploadImage(@RequestParam("productImage") MultipartFile file, Integer id) throws IOException {
-        attachmentService.uploadImage(file, id);
+    @PostMapping("/{id}/photo")
+    public void uploadImage(@PathVariable Integer id, @RequestBody MultipartFile file) throws IOException {
+        itemService.uploadPhotoItem(id, file);
     }
 
-    @GetMapping("/download/{id}")
-    public byte[] downloadImage(@PathVariable Integer id) {
-        byte[] image = attachmentService.downloadImage(id);
-        return image;
+    @GetMapping("/{id}/photo")
+    public ResponseEntity<InputStreamResource> downloadImage(@PathVariable Integer id) {
+        var attachment = itemService.getItemPhoto(id);
+        return buildDownloadResponse(attachment);
     }
 }
