@@ -12,6 +12,7 @@ import javax.persistence.*;
 public class AttachmentRecord {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     private String filename;
@@ -20,5 +21,3 @@ public class AttachmentRecord {
 
     private String type;
 }
-
-

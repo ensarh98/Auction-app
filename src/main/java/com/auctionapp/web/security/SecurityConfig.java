@@ -9,55 +9,58 @@ import org.springframework.http.HttpStatus;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.logout.HttpStatusReturningLogoutSuccessHandler;
 import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;
 
 @Configuration
+@EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-	@Autowired
-	private RestAuthenticationEntryPoint restAuthenticationEntryPoint;
+    @Autowired
+    private RestAuthenticationEntryPoint restAuthenticationEntryPoint;
 
-	@Autowired
-	private CustomWebAuthenticationDetailsSource authenticationDetailsSource;
+    @Autowired
+    private CustomWebAuthenticationDetailsSource authenticationDetailsSource;
 
-	@Autowired
-	private LoginSuccessHandler loginSuccessHandler;
+    @Autowired
+    private LoginSuccessHandler loginSuccessHandler;
 
-	@Autowired
-	private LoginFailureHandler loginFailureHandler;
+    @Autowired
+    private LoginFailureHandler loginFailureHandler;
 
-	@Autowired
-	private CustomAuthenticationProvider customAuthenticationProvider;
+    @Autowired
+    private CustomAuthenticationProvider customAuthenticationProvider;
 
-	private final LogoutSuccessHandler logoutSuccessHandler = new HttpStatusReturningLogoutSuccessHandler(
-			HttpStatus.OK);
+    private final LogoutSuccessHandler logoutSuccessHandler = new HttpStatusReturningLogoutSuccessHandler(
+            HttpStatus.OK);
 
-	@Override
-	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		auth.authenticationProvider(customAuthenticationProvider).getDefaultUserDetailsService();
-	}
+    @Override
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth.authenticationProvider(customAuthenticationProvider).getDefaultUserDetailsService();
+    }
 
-	@Override
-	protected void configure(HttpSecurity httpSecurity) throws Exception {
+    @Override
+    protected void configure(HttpSecurity httpSecurity) throws Exception {
 
-		httpSecurity.exceptionHandling().authenticationEntryPoint(restAuthenticationEntryPoint).and()
-				.authorizeRequests().antMatchers("/api/**").authenticated().and().formLogin()
-				.successHandler(loginSuccessHandler).failureHandler(loginFailureHandler).and().logout()
-				.logoutSuccessHandler(logoutSuccessHandler).deleteCookies("JSESSIONID").invalidateHttpSession(false)
-				.and().csrf().disable().cors();
-	}
+        httpSecurity.cors().and().csrf().disable();
 
-	@Bean
-	public BCryptPasswordEncoder passwordEncoder() {
-		return new BCryptPasswordEncoder();
-	}
+        httpSecurity.exceptionHandling().authenticationEntryPoint(restAuthenticationEntryPoint).and()
+                .authorizeRequests().antMatchers("/api/**").authenticated().and().formLogin()
+                .successHandler(loginSuccessHandler).failureHandler(loginFailureHandler).and().logout()
+                .logoutSuccessHandler(logoutSuccessHandler).deleteCookies("JSESSIONID").invalidateHttpSession(false);
+    }
 
-	@Bean
-	public ModelMapper modelMapper() {
-		return new ModelMapper();
-	}
+    @Bean
+    public BCryptPasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
+
+    @Bean
+    public ModelMapper modelMapper() {
+        return new ModelMapper();
+    }
 }

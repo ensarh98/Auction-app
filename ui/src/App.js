@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { useNavigate } from "react-router";
 import "./App.css";
 import Home from "./components/home";
 import Register from "./components/register";
@@ -62,7 +61,12 @@ function App() {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(item),
+      body: JSON.stringify({
+        ...item,
+        startDate: item.startDate.getTime(),
+        endDate: item.endDate.getTime(),
+        photoId: null,
+      }),
     })
       .then((response) => {
         if (!response.ok) {
@@ -71,9 +75,23 @@ function App() {
           return response.json();
         }
       })
-      .then((data) => {
-        console.log("DATA: ", data);
-      })
+      // .then((data) => {
+      //   fetch("http://localhost:8080/items/" + data.toString() + "/photo", {
+      //     method: "POST",
+      //     headers: {
+      //       "Content-Type": "multipart/form-data",
+      //     },
+      //     body: photo,
+      //   }).then((response) => {
+      //     if (!response.ok) {
+      //       throw new Error("Incorrect photo insertion.");
+      //     } else {
+      //       return response.json();
+      //     }
+      //   });
+
+      //   console.log("DATA: ", data);
+      // })
       .catch((error) => console.error(error));
   }
 
@@ -164,21 +182,7 @@ function App() {
 
         <Routes>
           {user ? (
-            <Route
-              path="/"
-              element={
-                <AboutProduct
-                  handleSetName={handleSetName}
-                  handleSetDescription={handleSetDescription}
-                  handleSetCategory={handleSetCategory}
-                  handleSetPhoto={handleSetPhoto}
-                  name={name}
-                  description={description}
-                  category={category}
-                  photo={photo}
-                />
-              }
-            ></Route>
+            <Route path="/" element={<Home />}></Route>
           ) : loggedIn ? (
             <Route
               path="/login"
@@ -187,7 +191,12 @@ function App() {
           ) : (
             <Route
               path="/register"
-              element={<Register setLoggedIn={setLoggedIn} />}
+              element={
+                <Register
+                  setLoggedIn={setLoggedIn}
+                  handleClickLogin={handleClickLogin}
+                />
+              }
             />
           )}
 

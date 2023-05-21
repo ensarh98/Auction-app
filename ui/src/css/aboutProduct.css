@@ -1,6 +1,12 @@
+.product-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
 .group160sp {
   position: absolute;
-  width: 1440px;
+  width: 100%;
   height: 60px;
   left: 0px;
   top: 132px;
@@ -11,7 +17,7 @@
   position: absolute;
   width: 125px;
   height: 24px;
-  left: 160px;
+  left: 20%;
   top: 18px;
   font-family: "Lato";
   font-style: normal;
@@ -31,7 +37,7 @@
   position: absolute;
   width: 192.44px;
   height: 24px;
-  left: 1072px;
+  left: 70%;
   top: 151px;
 }
 
@@ -76,7 +82,6 @@
   position: absolute;
   width: 738px;
   height: 64px;
-  left: 351px;
   top: 232px;
 }
 
@@ -92,10 +97,9 @@
 
 .frame178sp {
   position: absolute;
-  width: 738px;
+  width: 736px;
   height: 75px;
   left: 0px;
-  /* top: 64px; */
   background-color: rgba(250, 250, 250, 255);
 }
 
@@ -123,7 +127,6 @@
   position: absolute;
   width: 548px;
   height: 784px;
-  left: 446px;
   top: 419px;
 }
 

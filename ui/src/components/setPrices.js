@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 export default function AboutProduct(props) {
   return (
-    <div>
+    <div className="price-wrapper">
       <div className="group160ab">
         <span className="sellerTextab">BECOME SELLER</span>
       </div>
@@ -37,7 +37,7 @@ export default function AboutProduct(props) {
               </div>
               <input
                 className="reactangle38ab"
-                type="text"
+                type="number"
                 name="startPrice"
                 value={props.startPrice}
                 onChange={(e) => props.handleSetStartPrice(e.target.value)}

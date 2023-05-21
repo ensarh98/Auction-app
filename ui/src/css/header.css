@@ -27,7 +27,7 @@
 
 .group161 {
   position: absolute;
-  width: 1440px;
+  width: 100%;
   height: 1px;
   left: 0px;
   top: 132px;
@@ -44,9 +44,8 @@
   padding: 0px;
   gap: 32px;
   position: absolute;
-  width: 1112px;
+  width: 100%;
   height: 60px;
-  left: 164px;
   top: 56px;
 }
 .frame176 {
@@ -111,6 +110,7 @@
   flex: none;
   order: 0;
   flex-grow: 0;
+  text-decoration: none;
 }
 
 .orText {

@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 export default function Address(props) {
   return (
-    <div>
+    <div className="address-wrapper">
       <div className="group160ab">
         <span className="sellerTextab">BECOME SELLER</span>
       </div>

@@ -19,7 +19,7 @@ CREATE TABLE core.users (
 );
 
 CREATE TABLE core.attachments(
-	 id integer NOT NULL,
+	 id integer NOT NULL GENERATED ALWAYS AS IDENTITY,
 	 filename varchar(4000) NOT NULL,
 	 data BYTEA NOT NULL,
 	 type varchar(50) NOT NULL,

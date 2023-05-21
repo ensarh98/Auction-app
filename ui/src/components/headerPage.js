@@ -32,7 +32,6 @@ export default function HeaderPage(props) {
         }
       })
       .then((data) => {
-        console.log(data);
         props.setLoggedIn(true);
         props.setUser(null);
         navigate("/login");
@@ -129,7 +128,7 @@ export default function HeaderPage(props) {
                         </Link>
                       </MenuItem>
                       <MenuItem onClick={popupState.close}>
-                        <Link to={"/"} className="linkItem">
+                        <Link to={"/aboutProduct"} className="linkItem">
                           Become Seller
                         </Link>
                       </MenuItem>

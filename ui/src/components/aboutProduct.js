@@ -19,44 +19,47 @@ export default function AboutProduct(props) {
         <span className="becomeSellerText">BECOME SELLER</span>
       </div>
 
-      <div className="frame434sp">
-        <div className="reactangle66">
-          <div className="frame178sp">
-            <span className="addItemTextsp">
-              DETAIL INFORMATION ABOUT PRODUCT
-            </span>
+      <div className="product-wrapper">
+        <div className="frame434sp">
+          <div className="reactangle66">
+            <div className="frame178sp">
+              <span className="addItemTextsp">
+                DETAIL INFORMATION ABOUT PRODUCT
+              </span>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div className="frame179sp">
-        <div className="frame435sp">
-          <div className="inputItemsp">
-            <span className="whatDoYouSellText">What do you sell?</span>
-            <input
-              className="frame230sp"
-              type="text"
-              name="name"
-              value={props.name}
-              onChange={(e) => props.handleSetName(e.target.value)}
-            />
-            <div className="wordsCharactersText">2-5 words (60 characters)</div>
-          </div>
-          <div className="frame227sp">
-            <div className="dropdownCategory">
-              <select
-                defaultValue="category"
-                className="frame40sp"
-                name="category"
-                onChange={(e) => props.handleSetCategory(e.target.value)}
-              >
-                <option disabled value="category">
-                  Select Category
-                </option>
-                <option value="clothes">Clothes</option>
-              </select>
+        <div className="frame179sp">
+          <div className="frame435sp">
+            <div className="inputItemsp">
+              <span className="whatDoYouSellText">What do you sell?</span>
+              <input
+                className="frame230sp"
+                type="text"
+                name="name"
+                value={props.name}
+                onChange={(e) => props.handleSetName(e.target.value)}
+              />
+              <div className="wordsCharactersText">
+                2-5 words (60 characters)
+              </div>
             </div>
-            {/* <div className="dropdownSubategory">
+            <div className="frame227sp">
+              <div className="dropdownCategory">
+                <select
+                  defaultValue="category"
+                  className="frame40sp"
+                  name="category"
+                  onChange={(e) => props.handleSetCategory(e.target.value)}
+                >
+                  <option disabled value="category">
+                    Select Category
+                  </option>
+                  <option value="clothes">Clothes</option>
+                </select>
+              </div>
+              {/* <div className="dropdownSubategory">
               <select className="frame40sp" name="Subcategory" id="subcategory">
                 <option disabled selected value="subcategory">
                   Select Subcategory
@@ -64,50 +67,51 @@ export default function AboutProduct(props) {
                 <option value="shoes">Shoes</option>
               </select>
             </div> */}
-          </div>
+            </div>
 
-          <div className="frame229sp">
-            <div className="textArea">
-              <span className="descriptionTextsp">Description</span>
-              <textarea
-                id="description"
-                name="description"
-                className="frame228sp"
-                value={props.description}
-                onChange={(e) => props.handleSetDescription(e.target.value)}
-              ></textarea>
-              <div className="wordsCharactersDescText">
-                2-5 words (60 characters)
+            <div className="frame229sp">
+              <div className="textArea">
+                <span className="descriptionTextsp">Description</span>
+                <textarea
+                  id="description"
+                  name="description"
+                  className="frame228sp"
+                  value={props.description}
+                  onChange={(e) => props.handleSetDescription(e.target.value)}
+                ></textarea>
+                <div className="wordsCharactersDescText">
+                  2-5 words (60 characters)
+                </div>
               </div>
             </div>
-          </div>
-          <label className="inputPhoto" htmlFor="photo">
-            <div className="frame233sp">
-              <div className="frame231sp">
-                <label className="frame232sp">
-                  <span className="uploadPhotosText">Upload Photos</span>
-                  <span className="orJustDragAndDrop">
-                    or just drag and drop
+            <label className="inputPhoto" htmlFor="photo">
+              <div className="frame233sp">
+                <div className="frame231sp">
+                  <label className="frame232sp">
+                    <span className="uploadPhotosText">Upload Photos</span>
+                    <span className="orJustDragAndDrop">
+                      or just drag and drop
+                    </span>
+                  </label>
+                  <span className="AddAtLeast3Photos">
+                    + Add at least 3 photos
                   </span>
-                </label>
-                <span className="AddAtLeast3Photos">
-                  + Add at least 3 photos
-                </span>
+                </div>
+                <input
+                  type="file"
+                  name="photo"
+                  id="photo"
+                  className="uploadPhotosInput"
+                  onChange={handlePhotoChange}
+                />
               </div>
-              <input
-                type="file"
-                name="photo"
-                id="photo"
-                className="uploadPhotosInput"
-                onChange={handlePhotoChange}
-              />
-            </div>
-          </label>
-          <Link to="/setPrices" className="frame230abb">
-            <div className="nextButtonsap">
-              <span className="nextTextab">NEXT</span>
-            </div>
-          </Link>
+            </label>
+            <Link to="/setPrices" className="frame230abb">
+              <div className="nextButtonsap">
+                <span className="nextTextab">NEXT</span>
+              </div>
+            </Link>
+          </div>
         </div>
       </div>
     </div>
