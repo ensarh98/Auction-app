@@ -1,5 +1,6 @@
 package com.auctionapp.controller;
 
+import com.auctionapp.common.UploadFileResponse;
 import com.auctionapp.item.Item;
 import com.auctionapp.item.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +15,7 @@ import java.util.List;
 
 @RestController
 @CrossOrigin
-@RequestMapping("/api/items")
+@RequestMapping("/items")
 public class ItemController extends BaseController {
 
     @Autowired
@@ -42,8 +43,10 @@ public class ItemController extends BaseController {
 
     @ResponseStatus(value = HttpStatus.OK)
     @PostMapping("/{id}/photo")
-    public void uploadImage(@PathVariable Integer id, @RequestBody MultipartFile file) throws IOException {
+    public UploadFileResponse uploadImage(@PathVariable Integer id, @RequestPart(value = "file") MultipartFile file)
+            throws IOException {
         itemService.uploadPhotoItem(id, file);
+        return new UploadFileResponse(id, UploadFileResponse.ResponseStatus.UPLOAD_SUCCESSFUL);
     }
 
     @GetMapping("/{id}/photo")

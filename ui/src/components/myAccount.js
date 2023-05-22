@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../css/myAccount.css";
 import AddIcon from "@mui/icons-material/Add";
 import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
@@ -6,8 +6,9 @@ import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import MonetizationOnOutlinedIcon from "@mui/icons-material/MonetizationOnOutlined";
 import ListOutlinedIcon from "@mui/icons-material/ListOutlined";
 import PersonIcon from "@mui/icons-material/Person";
+import { useNavigate } from "react-router";
 
-export default function MyAccount() {
+export default function MyAccount(props) {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
@@ -15,8 +16,25 @@ export default function MyAccount() {
   const [monthOfDate, setMonthOfDate] = useState("");
   const [yearOfDate, setYearOfDate] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
+  const navigate = useNavigate();
 
-  function handleAddItem() {}
+  function handleAddItem() {
+    navigate("/AboutProduct");
+  }
+
+  const [user, setUser] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:8080/users/" + props.user.id.toString())
+      .then((response) => response.json())
+      .then((data) => {
+        setUser(data);
+        setFirstName(data.firstName);
+        setLastName(data.lastName);
+        setEmail(data.email);
+        data.phone && setPhoneNumber(data.phone);
+      });
+  }, []);
 
   function handleSubmit() {}
 

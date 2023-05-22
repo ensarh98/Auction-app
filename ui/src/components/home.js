@@ -41,7 +41,7 @@ export default function Home(props) {
             <div className="reactangle54"></div>
           </div>
         </div>
-        <div className="frame125">
+        {/* <div className="frame125">
           <div className="frame171">
             <span className="fProducts">Featured Products</span>
             <span className="line10"></span>
@@ -63,7 +63,7 @@ export default function Home(props) {
               <span className="productStartPrice"></span>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );

@@ -11,15 +11,14 @@ import MyAccount from "./components/myAccount";
 import SetPrices from "./components/setPrices";
 import AboutProduct from "./components/aboutProduct";
 import Address from "./components/address";
-import { v4 as uuidv4 } from "uuid";
+import Shop from "./components/shop";
 
 function App() {
-  //const navigate = useNavigate();
   // About product
   const [name, setName] = useState("");
   const [category, setCategory] = useState("");
   const [description, setDescription] = useState("");
-  const [photo, setPhoto] = useState(null);
+  const [file, setFile] = useState(null);
   // Set prices
   const [startPriceS, setStartPrice] = useState("");
   const [startDateS, setStartDate] = useState("");
@@ -34,13 +33,11 @@ function App() {
     let startPrice = parseFloat(startPriceS);
     let startDate = new Date(Date.parse(startDateS));
     let endDate = new Date(Date.parse(endDateS));
-    let photoId = parseInt(uuidv4().replace(/-/g, ""), 16);
 
     let item = {
       name,
       description,
       address,
-      photoId,
       startPrice,
       startDate,
       endDate,
@@ -48,15 +45,15 @@ function App() {
       userId,
     };
 
-    // setName("");
-    // setCategory("");
-    // setDescription("");
-    // setStartPrice("");
-    // setStartDate("");
-    // setEndDate("");
-    // setAddress("");
+    setName("");
+    setCategory("");
+    setDescription("");
+    setStartPrice("");
+    setStartDate("");
+    setEndDate("");
+    setAddress("");
 
-    fetch("http://localhost:8080/api/items", {
+    fetch("http://localhost:8080/items", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -65,7 +62,6 @@ function App() {
         ...item,
         startDate: item.startDate.getTime(),
         endDate: item.endDate.getTime(),
-        photoId: null,
       }),
     })
       .then((response) => {
@@ -75,40 +71,16 @@ function App() {
           return response.json();
         }
       })
-      // .then((data) => {
-      //   fetch("http://localhost:8080/items/" + data.toString() + "/photo", {
-      //     method: "POST",
-      //     headers: {
-      //       "Content-Type": "multipart/form-data",
-      //     },
-      //     body: photo,
-      //   }).then((response) => {
-      //     if (!response.ok) {
-      //       throw new Error("Incorrect photo insertion.");
-      //     } else {
-      //       return response.json();
-      //     }
-      //   });
-
-      //   console.log("DATA: ", data);
-      // })
+      .then((data) => {
+        const formData = new FormData();
+        formData.append("file", file);
+        fetch("http://localhost:8080/items/" + data.toString() + "/photo", {
+          method: "POST",
+          body: formData,
+        }).then((res) => window.open("/shop"));
+      })
       .catch((error) => console.error(error));
   }
-
-  //     if (!response.ok) {
-  //       throw new Error("Error saving item data");
-  //     }
-
-  //     // Ukoliko je unos u tabelu "item" uspešan, dobijete generisani "item_id"
-  //     const { item_id } = await response.json();
-
-  //     // Pozovite funkciju za slanje slike
-  //     saveAttachment(item_id);
-  //   } catch (error) {
-  //     console.error(error);
-  //     // Handle error
-  //   }
-  // }
 
   const handleSetName = (name) => {
     setName(name);
@@ -123,7 +95,7 @@ function App() {
   };
 
   const handleSetPhoto = (photo) => {
-    setPhoto(photo);
+    setFile(photo);
   };
 
   const handleSetStartPrice = (startPrice) => {
@@ -200,7 +172,8 @@ function App() {
             />
           )}
 
-          <Route path="/account" element={<MyAccount />} />
+          <Route path="/account" element={<MyAccount user={user} />} />
+          <Route path="/shop" element={<Shop user={user} />} />
           <Route
             path="/aboutProduct"
             element={
@@ -212,7 +185,7 @@ function App() {
                 name={name}
                 description={description}
                 category={category}
-                photo={photo}
+                file={file}
               />
             }
           />

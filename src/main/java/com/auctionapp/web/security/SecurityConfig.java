@@ -24,9 +24,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private RestAuthenticationEntryPoint restAuthenticationEntryPoint;
 
     @Autowired
-    private CustomWebAuthenticationDetailsSource authenticationDetailsSource;
-
-    @Autowired
     private LoginSuccessHandler loginSuccessHandler;
 
     @Autowired
@@ -48,7 +45,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         httpSecurity.cors().and().csrf().disable();
 
-        httpSecurity.exceptionHandling().authenticationEntryPoint(restAuthenticationEntryPoint).and()
+        httpSecurity.antMatcher("/**").exceptionHandling().authenticationEntryPoint(restAuthenticationEntryPoint).and()
                 .authorizeRequests().antMatchers("/api/**").authenticated().and().formLogin()
                 .successHandler(loginSuccessHandler).failureHandler(loginFailureHandler).and().logout()
                 .logoutSuccessHandler(logoutSuccessHandler).deleteCookies("JSESSIONID").invalidateHttpSession(false);

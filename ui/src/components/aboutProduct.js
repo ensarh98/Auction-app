@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 
 export default function AboutProduct(props) {
   const handlePhotoChange = (e) => {
-    const selectedPhoto = e.target.files[0];
-    props.handleSetPhoto(selectedPhoto);
+    const file = e.target.files[0];
+    props.handleSetPhoto(file);
   };
 
   return (
@@ -84,7 +84,7 @@ export default function AboutProduct(props) {
                 </div>
               </div>
             </div>
-            <label className="inputPhoto" htmlFor="photo">
+            <label className="inputPhoto" htmlFor="file">
               <div className="frame233sp">
                 <div className="frame231sp">
                   <label className="frame232sp">
@@ -99,8 +99,8 @@ export default function AboutProduct(props) {
                 </div>
                 <input
                   type="file"
-                  name="photo"
-                  id="photo"
+                  name="file"
+                  id="file"
                   className="uploadPhotosInput"
                   onChange={handlePhotoChange}
                 />

@@ -1,5 +1,9 @@
 package com.auctionapp.controller;
 
+import com.auctionapp.common.UploadFileResponse;
+import com.auctionapp.db.model.UserRecord;
+import com.auctionapp.db.repository.UserRepository;
+import com.auctionapp.user.User;
 import com.auctionapp.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.InputStreamResource;
@@ -12,19 +16,30 @@ import java.io.IOException;
 
 @RestController
 @CrossOrigin
-@RequestMapping("/api/users")
+@RequestMapping("/users")
 public class UserController extends BaseController {
 
     @Autowired
     private UserService userService;
 
-    @ResponseStatus(value = HttpStatus.OK)
-    @PostMapping("/{id}/photo")
-    public void uploadImage(@PathVariable Integer id, @RequestParam MultipartFile file) throws IOException {
-        userService.uploadProfilePhoto(id, file);
+    @Autowired
+    private UserRepository userRepository;
+
+    @GetMapping("/{id}")
+    public UserRecord getUser(@PathVariable Integer id) throws IOException {
+        var user = userRepository.findById(id).orElseThrow();
+        System.out.println(user);
+        return user;
     }
 
-    @GetMapping("/download/{id}")
+    @ResponseStatus(value = HttpStatus.OK)
+    @PostMapping("/{id}/photo")
+    public UploadFileResponse uploadImage(@PathVariable Integer id, @RequestPart(value = "file") MultipartFile file) throws IOException {
+        userService.uploadProfilePhoto(id, file);
+        return new UploadFileResponse(id, UploadFileResponse.ResponseStatus.UPLOAD_SUCCESSFUL);
+    }
+
+    @GetMapping("/{id}/photo")
     public ResponseEntity<InputStreamResource> downloadImage(@PathVariable Integer id) {
         var photo = userService.getUserProfilePhoto(id);
         return buildDownloadResponse(photo);

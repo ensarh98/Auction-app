@@ -102,7 +102,7 @@ export default function HeaderPage(props) {
                 HOME
               </Link>
               <Link
-                to="/"
+                to="/shop"
                 className={`shopText ${activeLink === "shop" ? "active" : ""}`}
                 onClick={() => handleLinkClick("shop")}
               >
