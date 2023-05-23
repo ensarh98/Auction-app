@@ -20,4 +20,5 @@ public class AttachmentRecord {
     private byte[] data;
 
     private String type;
+
 }
