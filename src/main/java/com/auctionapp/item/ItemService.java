@@ -79,6 +79,7 @@ public class ItemService {
     }
 
     private Boolean checkItemStartDate(Date itemStartDate, Date itemEndDate) {
+        var today = new Date();
         return today.compareTo(itemStartDate) > 0 || itemStartDate.compareTo(itemEndDate) > 0;
     }
 
@@ -105,8 +106,7 @@ public class ItemService {
                     messageSource.getMessage("WRONG_SUBCATEGORY_ID", null, LocaleContextHolder.getLocale()));
         }
 
-        Date today = new Date(); // Checking whether the start date of the sale is before the end date and the
-                                 // current one
+         // Checking whether the start date of the sale is before the end date and the current one
         if (checkItemStartDate(item.getStartDate(), item.getEndDate())) {
             throw new AppException(AppException.VALIDATION_ERROR,
                     messageSource.getMessage("DATE_NOT_VALID", null, LocaleContextHolder.getLocale()));
@@ -140,8 +140,7 @@ public class ItemService {
                     messageSource.getMessage("WRONG_SUBCATEGORY_ID", null, LocaleContextHolder.getLocale()));
         }
 
-        Date today = new Date(); // Checking whether the start date of the sale is before the end date and the
-                                 // current one
+        // Checking whether the start date of the sale is before the end date and the current one
         if (checkItemStartDate(item.getStartDate(), item.getEndDate())) {
             throw new AppException(AppException.VALIDATION_ERROR,
                     messageSource.getMessage("DATE_NOT_VALID", null, LocaleContextHolder.getLocale()));
