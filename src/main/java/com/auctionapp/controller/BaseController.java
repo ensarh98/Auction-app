@@ -16,6 +16,12 @@ import io.swagger.annotations.ApiResponses;
 
 import java.io.ByteArrayInputStream;
 
+/**
+ * Base controller for handling exceptions and returning standardized error
+ * responses.
+ * 
+ * @author Ensar Horozović
+ */
 @ApiResponses(value = {
 		@ApiResponse(code = 400, message = "Client Error", response = BaseController.ErrorDetails.class),
 		@ApiResponse(code = 401, message = "Unauthorized"),
@@ -60,7 +66,8 @@ public class BaseController {
 	protected ResponseEntity<InputStreamResource> buildDownloadResponse(Attachment attachment) {
 
 		var headers = new HttpHeaders();
-		headers.add(HttpHeaders.CONTENT_DISPOSITION, String.format("attachment; filename=%s", attachment.getFilename()));
+		headers.add(HttpHeaders.CONTENT_DISPOSITION,
+				String.format("attachment; filename=%s", attachment.getFilename()));
 		headers.add(HttpHeaders.CONTENT_TYPE, attachment.getType());
 
 		var body = new InputStreamResource(new ByteArrayInputStream(attachment.getData()));

@@ -10,6 +10,10 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 
+/**
+ * @author Ensar Horozović
+ */
+
 @Component
 public class CustomAuthenticationProvider implements AuthenticationProvider {
 

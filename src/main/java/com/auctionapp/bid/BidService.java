@@ -15,6 +15,13 @@ import javax.transaction.Transactional;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * Service class for managing bid information.
+ * Provides methods for creating, updating, deleting and retrieving user information.
+ * Uses BidRepository for data access.
+ *
+ * @author Ensar Horozović
+ */
 @Service
 @Transactional
 public class BidService {

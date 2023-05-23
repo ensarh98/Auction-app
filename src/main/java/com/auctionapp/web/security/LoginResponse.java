@@ -3,6 +3,10 @@ package com.auctionapp.web.security;
 import lombok.Getter;
 import lombok.Setter;
 
+/**
+ * @author Ensar Horozović
+ */
+
 @Getter
 @Setter
 public class LoginResponse {

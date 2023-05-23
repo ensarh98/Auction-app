@@ -14,6 +14,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Date;
 
+/**
+ * AuthService class provides methods for user registration.
+ * Uses UserRepository for data access.
+ *
+ * @author Ensar Horozović
+ */
 @Transactional
 @Service
 public class AuthService {

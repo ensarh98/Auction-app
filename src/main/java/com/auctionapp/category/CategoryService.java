@@ -16,6 +16,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * CategoryService class for managing category information.
+ * Provides methods for creating, updating, deleting and retrieving user information.
+ * Uses CategoryRepository for data access.
+ *
+ * @author Ensar Horozović
+ */
 @Transactional
 @Service
 public class CategoryService {

@@ -4,7 +4,9 @@ import java.util.Date;
 
 import org.springframework.core.convert.converter.Converter;
 
-
+/**
+ * @author Ensar Horozović
+ */
 public final class DateConverter implements Converter<String, Date> {
 
     @Override

@@ -12,6 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 /**
  * Authentication API specification for Swagger documentation. Implemented by
  * Spring Security.
+ *
+ * @author Ensar Horozović
  */
 @RestController
 @CrossOrigin

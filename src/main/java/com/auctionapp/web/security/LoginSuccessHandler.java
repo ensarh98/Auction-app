@@ -22,6 +22,7 @@ import org.springframework.beans.factory.annotation.Autowired;
  * The same as built-in SimpleUrlAuthenticationSuccessHandler but without http
  * redirect at the end of process.
  *
+ * @author Ensar Horozović
  */
 @Component
 @Transactional

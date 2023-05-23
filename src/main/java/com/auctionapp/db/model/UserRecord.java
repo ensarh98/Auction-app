@@ -10,6 +10,12 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import java.util.Date;
 
+/**
+ * Represents a user in the system.
+ * This entity is mapped to the "users" table in the database.
+ *
+ * @author Ensar Horozović
+ */
 @Entity()
 @Table(schema = "core", name = "users")
 @Getter

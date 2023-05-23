@@ -21,6 +21,13 @@ import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * ItemService class for managing item information.
+ * Provides methods for creating, updating, deleting and retrieving user information.
+ * Uses ItemRepository for data access.
+ *
+ * @author Ensar Horozović
+ */
 @Service
 @Transactional
 public class ItemService {

@@ -9,11 +9,13 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 /**
  * Implements UserDetails interface provided by the Spring Security. <br>
- * This object is stored into user session and it should contain only minimal
+ * This object is stored into user session, and it should contain only minimal
  * set of data necessary for authentication/authorization(to preserve server
  * memory).
  *
+ * @author Ensar Horozović
  */
+
 public class UserDetailsImpl implements UserDetails {
 
 	private static final long serialVersionUID = 1L;

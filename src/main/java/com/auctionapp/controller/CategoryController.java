@@ -9,7 +9,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
-
+/**
+ * Controller class for managing categories.
+ * Handles requests for retrieving, creating, updating and deleting categories.
+ *
+ * @author Ensar Horozović
+ */
 @RestController
 @CrossOrigin
 @RequestMapping("/api/categories")

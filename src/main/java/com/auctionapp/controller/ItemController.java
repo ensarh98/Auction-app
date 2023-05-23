@@ -13,6 +13,12 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
 import java.util.List;
 
+/**
+ * Controller class for managing items.
+ * Handles requests for retrieving, creating, updating and deleting items.
+ *
+ * @author Ensar Horozović
+ */
 @RestController
 @CrossOrigin
 @RequestMapping("/items")

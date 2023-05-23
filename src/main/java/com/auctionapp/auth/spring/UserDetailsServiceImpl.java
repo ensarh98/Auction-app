@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 /**
  * Invoked by the Spring Security to retrieve authentication/authorization data.
  *
+ * @author Ensar Horozović
  */
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {

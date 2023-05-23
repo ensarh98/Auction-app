@@ -17,6 +17,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * SubcategoryService class for managing subcategory information.
+ * Provides methods for creating, updating, deleting and retrieving user information.
+ * Uses SubcategoryRepository for data access.
+ *
+ * @author Ensar Horozović
+ */
+
 @Transactional
 @Service
 public class SubcategoryService {

@@ -12,6 +12,7 @@ import com.google.common.hash.Hashing;
 /**
  * Cryptographic service.
  *
+ * @author Ensar Horozović
  */
 @Service
 public class CryptoService {
