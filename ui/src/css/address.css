@@ -10,7 +10,7 @@
   height: 60px;
   left: 0px;
   top: 132px;
-  background-color: rgba(250, 250, 250, 255);
+  background-color: #fafafa;
 }
 
 .sellerTextab {
@@ -42,8 +42,6 @@
 }
 
 .myAccountTextab {
-  /* width: 85px;
-        height: 24px; */
   font-family: "Lato";
   font-style: normal;
   font-weight: 400;
@@ -64,8 +62,6 @@
 }
 
 .becomeSellerTextab {
-  /* width: 66px;
-          height: 24px; */
   font-family: "Lato";
   font-style: normal;
   font-weight: 700;
@@ -157,8 +153,7 @@
   width: 736px;
   height: 75px;
   left: 0px;
-  /* top: 64px; */
-  background-color: rgba(250, 250, 250, 255);
+  background-color: #fafafa;
 }
 
 .locationAndShippingTextls {

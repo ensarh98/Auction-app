@@ -5,7 +5,6 @@
   padding: 0px;
   gap: 24px;
   width: 1120px;
-  /* height: 2056px; */
   flex: none;
   order: 1;
   flex-grow: 0;
@@ -18,7 +17,6 @@
   padding: 0px;
   gap: 24px;
   width: 1120px;
-  /* height: 3056px; */
   flex: none;
   order: 0;
   flex-grow: 0;
@@ -31,7 +29,6 @@
   padding: 0px;
   gap: 32px;
   width: 262px;
-  /* height: 1584px; */
   flex: none;
   order: 0;
   flex-grow: 0;
@@ -73,8 +70,6 @@
   align-items: center;
   padding: 0px;
   gap: 32px;
-  /* width: 1120px; */
-  /* height: 3145.94px; */
   flex: none;
   order: 1;
   flex-grow: 0;
@@ -84,12 +79,9 @@
 .frame176sh {
   display: flex;
   flex-direction: column;
-  /* justify-content: center; */
-  /* align-items: center; */
   padding: 0px;
   gap: 32px;
   width: 1120px;
-  /* height: 3145.94px; */
   flex: none;
   order: 0;
   flex-grow: 0;
@@ -189,7 +181,6 @@
   padding: 0px;
   gap: 40px;
   width: 834px;
-  /* height: 3056px; */
   flex: none;
   order: 1;
   flex-grow: 0;
@@ -344,7 +335,6 @@
   padding: 0px;
   gap: 24px;
   width: 820px;
-  /* height: 1968px; */
   flex: none;
   order: 1;
   flex-grow: 0;

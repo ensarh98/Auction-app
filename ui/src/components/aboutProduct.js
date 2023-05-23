@@ -59,14 +59,6 @@ export default function AboutProduct(props) {
                   <option value="clothes">Clothes</option>
                 </select>
               </div>
-              {/* <div className="dropdownSubategory">
-              <select className="frame40sp" name="Subcategory" id="subcategory">
-                <option disabled selected value="subcategory">
-                  Select Subcategory
-                </option>
-                <option value="shoes">Shoes</option>
-              </select>
-            </div> */}
             </div>
 
             <div className="frame229sp">

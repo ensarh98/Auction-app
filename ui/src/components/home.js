@@ -41,29 +41,6 @@ export default function Home(props) {
             <div className="reactangle54"></div>
           </div>
         </div>
-        {/* <div className="frame125">
-          <div className="frame171">
-            <span className="fProducts">Featured Products</span>
-            <span className="line10"></span>
-          </div>
-          <div className="frame6">
-            <div className="product">
-              <div className="reactangle18"></div>
-              <span className="productName"></span>
-              <span className="productStartPrice"></span>
-            </div>
-            <div className="product">
-              <div className="reactangle18"></div>
-              <span className="productName"></span>
-              <span className="productStartPrice"></span>
-            </div>
-            <div className="product">
-              <div className="reactangle18"></div>
-              <span className="productName"></span>
-              <span className="productStartPrice"></span>
-            </div>
-          </div>
-        </div> */}
       </div>
     </div>
   );

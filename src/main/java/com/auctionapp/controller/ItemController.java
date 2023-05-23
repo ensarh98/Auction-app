@@ -51,8 +51,7 @@ public class ItemController extends BaseController {
     @PostMapping("/{id}/photo")
     public UploadFileResponse uploadImage(@PathVariable Integer id, @RequestPart(value = "file") MultipartFile file)
             throws IOException {
-        itemService.uploadPhotoItem(id, file);
-        return new UploadFileResponse(id, UploadFileResponse.ResponseStatus.UPLOAD_SUCCESSFUL);
+        return itemService.uploadPhotoItem(id, file);
     }
 
     @GetMapping("/{id}/photo")
