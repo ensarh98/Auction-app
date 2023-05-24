@@ -72,7 +72,7 @@ export default function Shop() {
                     <div className="frame4sh">
                       <img
                         className="reactangle10sh"
-                        src={`http://localhost:8080/items/${item.photoId}/photo`}
+                        src={`http://localhost:8080/items/${item.id}/photo`}
                         alt={`Slika item ${item.photoId}`}
                       />
                     </div>
