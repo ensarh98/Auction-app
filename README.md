@@ -26,12 +26,12 @@ spremaju i prikazuju slike artikala, što je dodalo važan vizualni aspekt proje
 Ako želite pokrenuti ovaj projekt lokalno na svom računalu, slijedite sljedeće korake:
 
 1. Klonirajte projekat na svoj računar
-3. Backend:
-   Podesite konfiguraciju baze podataka u fajlu application.properties
-   Pokrenite aplikaciju kako bi se generisale tabele baze podataka
+2. Backend:
+   - Podesite konfiguraciju baze podataka u fajlu application.properties
+   - Pokrenite aplikaciju kako bi se generisale tabele baze podataka
 3. Frontend:
-   npm install - za instalaciju svih potrebnih biblioteka
-   npm start
+   - npm install - za instalaciju svih potrebnih biblioteka
+   - npm start
 
 ## Naredni koraci
 
