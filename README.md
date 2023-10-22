@@ -2,7 +2,7 @@
 
 ## O projektu
 
-Auction-app je projekt koji sam razvijao tokom moje praktične obuke u Atlantbh. Cilj projekta bio je izgraditi online platformu za aukcije korištenjem Java Spring Boot za backend i React za frontend. 
+Auction-app je projekt koji sam razvijao tokom moje praktične obuke u kompaniji Atlantbh. Cilj projekta bio je izgraditi online platformu za aukcije korištenjem Java Spring Boot za backend i React za frontend. 
 Ovo je bila jedinstvena prilika da se upoznam s novim tehnologijama i steknem iskustvo u stvaranju kompleksne aplikacije.
 
 ## Status projekta
@@ -25,5 +25,5 @@ spremaju i prikazuju slike artikala, što je dodalo važan vizualni aspekt proje
 
 Projekt "Auction-app" ostaje otvoren za dalji razvoj i unapređenje. Planirane funkcionalnosti uključuju završetak frontend dijela, implementaciju funkcionalnosti za licitiranje, poboljšanje autentikacije korisnika i još mnogo toga.
 
-Hvala vam što ste provjerili projekt "Auction-app"!
+# Hvala vam što ste provjerili projekt "Auction-app"!
 
