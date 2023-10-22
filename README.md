@@ -25,5 +25,5 @@ spremaju i prikazuju slike artikala, što je dodalo važan vizualni aspekt proje
 
 Projekt "Auction-app" ostaje otvoren za dalji razvoj i unapređenje. Planirane funkcionalnosti uključuju završetak frontend dijela, implementaciju funkcionalnosti za licitiranje, poboljšanje autentikacije korisnika i još mnogo toga.
 
-# Hvala vam što ste provjerili projekt "Auction-app"!
+Hvala vam što ste provjerili projekt "Auction-app"!
 
