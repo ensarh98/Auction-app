@@ -21,9 +21,21 @@ spremaju i prikazuju slike artikala, što je dodalo važan vizualni aspekt proje
 - Upravljanje zadacima: Trello
 - Komunikacija sa mentorom: Slack
 
+## Instalacija
+
+Ako želite pokrenuti ovaj projekt lokalno na svom računalu, slijedite sljedeće korake:
+
+1. Klonirajte projekat na svoj računar
+3. Backend:
+   Podesite konfiguraciju baze podataka u fajlu application.properties
+   Pokrenite aplikaciju kako bi se generisale tabele baze podataka
+3. Frontend:
+   npm install - za instalaciju svih potrebnih biblioteka
+   npm start
+
 ## Naredni koraci
 
-Projekt "Auction-app" ostaje otvoren za dalji razvoj i unapređenje. Planirane funkcionalnosti uključuju završetak frontend dijela, implementaciju funkcionalnosti za licitiranje, poboljšanje autentikacije korisnika i još mnogo toga.
+Projekt "Auction-app" ostaje otvoren za dalji razvoj i unapređenje. Planirane funkcionalnosti uključuju završetak frontend dijela, implementaciju funkcionalnosti za aukciju, poboljšanje autentikacije korisnika i još mnogo toga.
 
 Hvala vam što ste provjerili projekt "Auction-app"!
 
