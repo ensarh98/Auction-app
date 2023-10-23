@@ -23,7 +23,7 @@ spremaju i prikazuju slike artikala, što je dodalo važan vizualni aspekt proje
 
 ## Instalacija
 
-Ako želite pokrenuti ovaj projekt lokalno na svom računalu, slijedite sljedeće korake:
+Ako želite pokrenuti ovaj projekt lokalno na svom računaru, slijedite sljedeće korake:
 
 1. Klonirajte projekat na svoj računar
 2. Backend:
